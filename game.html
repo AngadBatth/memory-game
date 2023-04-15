@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="./Assets/css/reset.css" />
     <link rel="stylesheet" href="./Assets/css/style_Reviewcards.css" />
     <title>Memory Game</title>
@@ -12,6 +16,22 @@
     <main>
       <div id="cards" class="mainCards"></div>
       <div id="timer"></div>
+      <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content custom-modal">
+          <!-- Any other Bulma elements you want -->
+          <div class="control">
+            <input
+              class="input is-focused is-large"
+              type="text"
+              placeholder="Enter your Initial"
+            />
+            <div class="control is-justify-content-center is-align-items-center" style="display: flex;">
+              <button class="button is-primary" onclick="moveHighscore()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <script src="./Assets/javascript/script.js"></script>
     <script src="./Assets/javascript/script_Reviewcards.js"></script>

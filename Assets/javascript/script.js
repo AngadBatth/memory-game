@@ -1,4 +1,5 @@
 var timerEl = document.getElementById("timer");
+var modalEl = document.querySelector(".modal");
 var secondLeft = 60;
 
 
@@ -11,8 +12,17 @@ function setTime() {
       if (secondLeft < 1) {
         clearInterval(timerInterval);
          // add here the function change to the score ranking
+         cardsEl.innerHTML="";
+         timerEl.innerHTML="";
+         modalEl.setAttribute('class', 'is-active')
       }
     }, 1000);
+  }
+
+  setTime();
+
+  function moveHighscore(){
+    location.replace('./highscores.html');
   }
 
   //need to update the function (cards.addEventListner('click', etc)) when the user flip the first card  later
