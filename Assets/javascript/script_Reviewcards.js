@@ -14,6 +14,9 @@ let imgSrc = [
 ];
 imgSrc.alt = "random images";
 
+
+  let cardsWon = []
+
 // function that creates 12 background cards
 let createCards = function () {
   let numImages = 8;
@@ -32,8 +35,11 @@ let createCards = function () {
 
     cardEl.appendChild(img);
     cardsEl.appendChild(cardEl);
+
   }
 };
+
+
 
 createCards();
 
@@ -45,4 +51,10 @@ cardsEl.addEventListener("click", function (event) {
   let img = event.target;
   console.log(img);
   img.setAttribute("src", asset);
+
+
+
+
+
+
 });
