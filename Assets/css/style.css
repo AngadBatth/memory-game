@@ -1,0 +1,59 @@
+:root {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,17,60,1) 50%, rgba(2,0,36,1) 100%);
+    --btnColor: #DB504A;
+    --btnText: #000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Chivo Mono', 'monospace', sans-serif;
+    font-size: 3.5rem;
+    color: #60D394;
+    margin-bottom: 3rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.playBtn {
+    font-family: 'Chivo Mono', 'monospace', sans-serif;
+    font-size: 2rem;
+    padding: 0.3rem 0;
+    width: 6rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    background-color: var(--btnColor);
+    color: var(--btnText);
+    border-radius: 10px;
+}
+
+.playBtn:hover {
+    box-shadow: 0 0.1rem 0.1rem 0 #000000;
+    transition: transform 125ms;
+    transform: scale(1.05);
+}
