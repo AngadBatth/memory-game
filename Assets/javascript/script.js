@@ -28,3 +28,5 @@ function setTime() {
   //need to update the function (cards.addEventListner('click', etc)) when the user flip the first card  later
   //(cardelement).addEventListener('click', () = >{ setTime();})
   //need to update 10 seconds substracle function after cardsgame function is completed ( secondLeft -= 10; if 2 chosen cards are not matched)
+
+  
