@@ -1,27 +1,60 @@
-let cardsEl = document.querySelector("#cards");
+var apiUrl = "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
+
+  var cardData = [""];
+  var faceUpCards = 0;
+  var firstCard = null;
+  var secondCard = null;
+fetch(apiUrl)
+  .then((res)=>res.json())
+  .then((data)=>{
+
+    cardData = [
+      card1 = (data.hits[7].webformatURL),
+      card2 = (data.hits[1].webformatURL),
+      card3 = (data.hits[5].webformatURL),
+      card4 = (data.hits[3].webformatURL),
+      card5 = (data.hits[10].webformatURL),
+      card6 = (data.hits[11].webformatURL),
+    ];
+    console.log(cardData[0]);
+    console.log(cardData[1]);
+    console.log(cardData[2]);
+    console.log(cardData[3]);
+    console.log(cardData[4]);
+    console.log(cardData[5]);
+
+    let cardsEl = document.querySelector("#cards");
 
 // Random Images cards
 let imgSrc = [
-  "Assets/imagestoReplace/imga.jpg",
-  "Assets/imagestoReplace/imgb.jpg",
-  "Assets/imagestoReplace/imgc.jpg",
-  "Assets/imagestoReplace/imgd.jpg",
-  "Assets/imagestoReplace/imge.jpg",
-  "Assets/imagestoReplace/imgf.jpg",
-  "Assets/imagestoReplace/imgg.jpg",
-  "Assets/imagestoReplace/imgh.jpg",
-  "Assets/imagestoReplace/imgi.jpg",
+  Image1 = card1,
+  Image2 = card1,
+  Image3 = card2,
+  Image4 = card2,
+  Image5 = card3,
+  Image6 = card3,
+  Image7 = card4,
+  Image8 = card4,
+  Image9 = card5,
+  Image10 = card5,
+  Image11 = card6,
+  Image12 = card6
 ];
+
+for(var i = imgSrc.length - 1; i > 0; i--){
+  var j = Math.floor(Math.random()*(i+1));
+  var randomOrder = imgSrc[i];
+  imgSrc[i] = imgSrc[j];
+  imgSrc[j] = randomOrder;
+} 
+
 imgSrc.alt = "random images";
-
-
-  let cardsWon = []
 
 // function that creates 12 background cards
 let createCards = function () {
-  let numImages = 8;
+  let numImages = 12;
   let backImgSrc = "Assets/imagestoReplace/backCard.jpg";
-  backImgSrc.alt = "balck background with an lightbulb";
+  backImgSrc.alt = "black background with an lightbulb";
 
   for (let i = 0; i < numImages; i++) {
     let cardEl = document.createElement("div");
@@ -35,11 +68,8 @@ let createCards = function () {
 
     cardEl.appendChild(img);
     cardsEl.appendChild(cardEl);
-
   }
 };
-
-
 
 createCards();
 
@@ -51,10 +81,10 @@ cardsEl.addEventListener("click", function (event) {
   let img = event.target;
   console.log(img);
   img.setAttribute("src", asset);
-
-
-
-
-
-
+  faceUpCards++;
+  console.log(faceUpCards);
+});
+})
+.catch(error=>{
+  console.error(error);
 });
