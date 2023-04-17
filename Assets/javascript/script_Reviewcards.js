@@ -29,18 +29,18 @@ fetch(apiUrl)
 
     // Random Images cards
     let imgSrc = [
-      (Image1 = card1),
-      (Image2 = card1),
-      (Image3 = card2),
-      (Image4 = card2),
-      (Image5 = card3),
-      (Image6 = card3),
-      (Image7 = card4),
-      (Image8 = card4),
-      (Image9 = card5),
-      (Image10 = card5),
-      (Image11 = card6),
-      (Image12 = card6),
+      card1,
+      card1,
+      card2,
+      card2,
+      card3,
+      card3,
+      card4,
+      card4,
+      card5,
+      card5,
+      card6,
+      card6,
     ];
 
     for (var i = imgSrc.length - 1; i > 0; i--) {
@@ -49,8 +49,13 @@ fetch(apiUrl)
       imgSrc[i] = imgSrc[j];
       imgSrc[j] = randomOrder;
     }
-
     imgSrc.alt = "random images";
+
+    let cardsWon = [];
+    // empty array to store the last two cards clicked
+    let lastTwoCards = [];
+    // empty array to store the matched cards
+    let cardsMatch = [];
 
     // function that creates the background cards
     let createCards = function () {
@@ -81,16 +86,39 @@ fetch(apiUrl)
 
     createCards();
 
-    // Click event replaces the background card with random images
+    // function that checks if two images are the same comparing the src "name" attribute
+    let isSameImage = function (img1, img2) {
+      return img1.getAttribute("src") === img2.getAttribute("src");
+    };
+
+    // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
+      // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
-      const asset = imgSrc[getAttribute];
-      console.log(asset);
+      // get the random image from the array based on the position of the background image index-> value of the attribute
+      let asset = imgSrc[getAttribute];
+      // event.target get the clicked image element
       let img = event.target;
-      console.log(img);
+      // when the background image is clicked, replace it with the random image from the array
       img.setAttribute("src", asset);
-      faceUpCards++;
-      console.log(faceUpCards);
+      // add the clicked image to the last two cards array
+      lastTwoCards.push(img);
+
+      // IF check if the last two cards match
+
+      // Condition to check if the user has selected two cards
+      if (lastTwoCards.length === 2) {
+        // check if the last two cards match
+        if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
+          console.log("Match!");
+          // add the matched cards to the matched cards array
+          cardsMatch.push(lastTwoCards[0], lastTwoCards[1]);
+        } else {
+          console.log("No match!");
+        }
+        // clear the last two cards array
+        lastTwoCards = [];
+      }
     });
   })
   .catch((error) => {
