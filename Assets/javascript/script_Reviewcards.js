@@ -4,6 +4,7 @@ var apiUrl = "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=
   var faceUpCards = 0;
   var firstCard = null;
   var secondCard = null;
+  let cardsEl;
 fetch(apiUrl)
   .then((res)=>res.json())
   .then((data)=>{
@@ -23,7 +24,7 @@ fetch(apiUrl)
     console.log(cardData[4]);
     console.log(cardData[5]);
 
-    let cardsEl = document.querySelector("#cards");
+    cardsEl = document.querySelector("#cards");
 
 // Random Images cards
 let imgSrc = [
