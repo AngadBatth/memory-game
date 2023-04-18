@@ -3,6 +3,8 @@ var apiUrl =
 
 var cardData = [""];
 
+let cardsEl;
+
 fetch(apiUrl)
   .then((res) => res.json())
   .then((data) => {
@@ -24,7 +26,7 @@ fetch(apiUrl)
     console.log(cardData[4]);
     console.log(cardData[5]);
 
-    let cardsEl = document.querySelector("#cards");
+    cardsEl = document.querySelector("#cards");
 
     // Random Images cards
     let imgSrc = [

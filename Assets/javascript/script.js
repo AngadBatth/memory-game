@@ -9,7 +9,7 @@ function setTime() {
       secondLeft--;
       timerEl.textContent = "Time: " + secondLeft;
   
-      if (secondLeft < 1) {
+      if (secondLeft <1) {
         clearInterval(timerInterval);
          // add here the function change to the score ranking
          cardsEl.innerHTML="";
