@@ -1,6 +1,6 @@
 var timerEl = document.getElementById("timer");
 var modalEl = document.querySelector(".modal");
-var secondLeft = 6;
+var secondLeft = 60;
 
 
 //This is the fucntion to countdown time.
