@@ -57,8 +57,9 @@ fetch(apiUrl)
     let lastTwoCards = [];
     // empty array to store the matched cards
     let cardsMatch = [];
-    // empty object to store the cards that don't match
-    let cardsNotMatch = {
+    // empty array to store the cards that don't match
+    let cardsNotMatch = [];
+    let cardsNotMatch2 = {
       card1: "",
       card2: "",
     };
@@ -121,22 +122,33 @@ fetch(apiUrl)
           console.log(match);
           // add the matched cards to the matched cards array
           cardsMatch.push(lastTwoCards[0], lastTwoCards[1]);
+
           console.log({ cardsMatch });
         } else {
           let noMatch = "No match!";
-          console.log({ noMatch });
+          // console.log(noMatch);
+          // add the cards that don't match to the not matched cards array
+          cardsNotMatch.push(lastTwoCards[0], lastTwoCards[1]);
+          console.log({ cardsNotMatch });
 
-          // add the cards that does not match to the object
-          cardsNotMatch.card1 = lastTwoCards[0];
-          cardsNotMatch.card2 = lastTwoCards[1];
+          cardsNotMatch2.card1 = lastTwoCards[0];
+          cardsNotMatch2.card2 = lastTwoCards[1];
+
+          // WHEN DO NOT MATCH KEEP MATCHED
 
           // if not match after 1 second replace the cards with the background image again
           setTimeout(function () {
-            cardsNotMatch.card1.setAttribute("src", backImgSrc);
-            cardsNotMatch.card2.setAttribute("src", backImgSrc);
+            for (let n = 0; n < cardsNotMatch.length; n++) {
+              let noMatch = cardsNotMatch[n];
+              noMatch.setAttribute("src", backImgSrc); //
+            }
           }, 1000);
         }
 
+        // setTimeout(function () {
+        //   cardsNotMatch2.card1.setAttribute("src", backImgSrc);
+        //   cardsNotMatch2.card2.setAttribute("src", backImgSrc);
+        // }, 1000);
         // clear the last two cards array
         lastTwoCards = [];
       }
