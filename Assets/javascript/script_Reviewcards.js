@@ -2,9 +2,7 @@ var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
 var cardData = [""];
-var faceUpCards = 0;
-var firstCard = null;
-var secondCard = null;
+
 fetch(apiUrl)
   .then((res) => res.json())
   .then((data) => {
@@ -118,10 +116,10 @@ fetch(apiUrl)
         // check if the last two cards match
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
           let match = "Match!";
-          console.log(match);
+          console.log({ match });
           // add the matched cards to the matched cards array
           cardsMatch.push(lastTwoCards[0], lastTwoCards[1]);
-          console.log({ cardsMatch });
+          // console.log({ cardsMatch });
         } else {
           let noMatch = "No match!";
           console.log({ noMatch });
@@ -145,3 +143,7 @@ fetch(apiUrl)
   .catch((error) => {
     console.error(error);
   });
+
+// function to not allow the same card twice
+// for with a if inside on the beginin of the click event
+// if cardsMatch return
