@@ -3,7 +3,7 @@ const highScoresList = document.getElementById("highScoresList");
 
 var highScores1 = [];
 var score = [5, 4, 8];
-var highScoresLength = 0;
+var highScoresLength = 3;
 
 localStorage.setItem("highScores", JSON.stringify(score));
 
