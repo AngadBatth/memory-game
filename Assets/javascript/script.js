@@ -2,7 +2,7 @@ var timerEl = document.getElementById("timer");
 var modalEl = document.querySelector(".modal");
 var initialEl = document.querySelector(".custom-input");
 var initial="";
-var secondLeft = 6;
+var secondLeft = 0;
 
 
 //This is the fucntion to countdown time.
@@ -24,11 +24,8 @@ function setTime() {
   setTime();
 
   function moveHighscore(){
+    initial = initialEl.value.trim();
+    initialEl.setAttribute("type", "text");
     location.replace('./highscores.html');
   }
-
-  //need to update the function (cards.addEventListner('click', etc)) when the user flip the first card  later
-  //(cardelement).addEventListener('click', () = >{ setTime();})
-  //need to update 10 seconds substracle function after cardsgame function is completed ( secondLeft -= 10; if 2 chosen cards are not matched)
-
   
