@@ -1,15 +1,28 @@
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
-var cardData = [""];
+let SoundUrl = "https://code.createjs.com/1.0.0/preloadjs.min.js";
 
+var cardData = [""];
+var points = 0;
+let selectedCardsCount = 0;
 let cardsEl;
+// empty array to store the last two cards clicked
+let lastTwoCards = [];
+// empty array to store the matched cards
+let cardsMatch = [];
+// empty object to store the cards that don't match
+let cardsNotMatch = {
+  card1: "",
+  card2: "",
+};
+
+let backImgSrc = "Assets/image/backCard.jpg";
+backImgSrc.alt = "black background with an lightbulb";
 
 fetch(apiUrl)
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
-
     // SUGESTION: generate random number to get random image from the array when reload the page?
     cardData = [
       (card1 = data.hits[7].webformatURL),
@@ -19,12 +32,6 @@ fetch(apiUrl)
       (card5 = data.hits[10].webformatURL),
       (card6 = data.hits[11].webformatURL),
     ];
-    console.log(cardData[0]);
-    console.log(cardData[1]);
-    console.log(cardData[2]);
-    console.log(cardData[3]);
-    console.log(cardData[4]);
-    console.log(cardData[5]);
 
     cardsEl = document.querySelector("#cards");
 
@@ -51,20 +58,6 @@ fetch(apiUrl)
       imgSrc[j] = randomOrder;
     }
     imgSrc.alt = "random images";
-
-    let cardsWon = [];
-    // empty array to store the last two cards clicked
-    let lastTwoCards = [];
-    // empty array to store the matched cards
-    let cardsMatch = [];
-    // empty object to store the cards that don't match
-    let cardsNotMatch = {
-      card1: "",
-      card2: "",
-    };
-
-    let backImgSrc = "Assets/imagestoReplace/backCard.jpg";
-    backImgSrc.alt = "black background with an lightbulb";
 
     // function that creates the background cards
     let createCards = function () {
@@ -100,6 +93,22 @@ fetch(apiUrl)
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
+      // Check if there are already two cards selected
+      if (selectedCardsCount > 1) {
+        console.log(selectedCardsCount);
+        return;
+      }
+      // Increment selectedCardsCount
+      selectedCardsCount++;
+
+      // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
+      for (let i = 0; i < cardsMatch.length; i++) {
+        let selectMatch = cardsMatch[i];
+        if (event.target === selectMatch) {
+          return;
+        }
+      }
+
       // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
       // get the random image from the array based on the position of the background image index-> value of the attribute
@@ -117,11 +126,15 @@ fetch(apiUrl)
       if (lastTwoCards.length === 2) {
         // check if the last two cards match
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
+          points++;
+          console.log(points);
           let match = "Match!";
           console.log({ match });
           // add the matched cards to the matched cards array
           cardsMatch.push(lastTwoCards[0], lastTwoCards[1]);
-          // console.log({ cardsMatch });
+          console.log({ cardsMatch });
+          // reset the selected cards count
+          selectedCardsCount = 0;
         } else {
           let noMatch = "No match!";
           console.log({ noMatch });
@@ -134,6 +147,8 @@ fetch(apiUrl)
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
+            // reset the selected cards count
+            selectedCardsCount = 0;
           }, 1000);
         }
 
@@ -146,6 +161,18 @@ fetch(apiUrl)
     console.error(error);
   });
 
-// function to not allow the same card twice
-// for with a if inside on the beginin of the click event
-// if cardsMatch return
+// function that plays the background music when the user clicks on the button "Play"
+function playBackgroundMusic() {
+  createjs.Sound.initializeDefaultPlugins();
+  createjs.Sound.registerSound(
+    "Assets/music/Ice & Fire - King Canyon.mp3",
+    "backgroundMusic"
+  );
+  createjs.Sound.play("backgroundMusic", { loop: -1 });
+  createjs.Sound.volume = 0.07;
+}
+playBackgroundMusic();
+
+function stopBackgroundMusic() {
+  createjs.Sound.stop();
+}
