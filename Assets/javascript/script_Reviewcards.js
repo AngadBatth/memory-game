@@ -7,6 +7,18 @@ var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
 let cardsEl;
+// empty array to store the last two cards clicked
+let lastTwoCards = [];
+// empty array to store the matched cards
+let cardsMatch = [];
+// empty object to store the cards that don't match
+let cardsNotMatch = {
+  card1: "",
+  card2: "",
+};
+
+let backImgSrc = "Assets/image/backCard.jpg";
+backImgSrc.alt = "black background with an lightbulb";
 
 fetch(apiUrl)
   .then((res) => res.json())
@@ -46,19 +58,6 @@ fetch(apiUrl)
       imgSrc[j] = randomOrder;
     }
     imgSrc.alt = "random images";
-
-    // empty array to store the last two cards clicked
-    let lastTwoCards = [];
-    // empty array to store the matched cards
-    let cardsMatch = [];
-    // empty object to store the cards that don't match
-    let cardsNotMatch = {
-      card1: "",
-      card2: "",
-    };
-
-    let backImgSrc = "Assets/image/backCard.jpg";
-    backImgSrc.alt = "black background with an lightbulb";
 
     // function that creates the background cards
     let createCards = function () {
