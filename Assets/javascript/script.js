@@ -2,7 +2,7 @@ var timerEl = document.getElementById("timer");
 var modalEl = document.querySelector(".modal");
 var initialEl = document.querySelector(".custom-input");
 var initial="";
-var secondLeft = 0;
+var secondLeft = 60;
 
 
 //This is the fucntion to countdown time.
