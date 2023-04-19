@@ -100,16 +100,18 @@ fetch(apiUrl)
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
-      // get the value of the attribute cardImage from the img element
+      
+        // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
       // get the random image from the array based on the position of the background image index-> value of the attribute
       let asset = imgSrc[getAttribute];
       // event.target get the clicked image element
       let img = event.target;
       // when the background image is clicked, replace it with the random image from the array
-      img.setAttribute("src", asset);
+      img.setAttribute("src", asset); 
       // add the clicked image to the last two cards array
       lastTwoCards.push(img);
+      
 
       // IF check if the last two cards match
 
@@ -136,11 +138,13 @@ fetch(apiUrl)
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
+            
           }, 1000);
         }
 
         // clear the last two cards array
         lastTwoCards = [];
+        
       }
     });
   })
