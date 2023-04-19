@@ -1,11 +1,13 @@
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
-let SoundUrl = "https://code.createjs.com/1.0.0/preloadjs.min.js";
+let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
 
 var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
+let jokeContainer = document.querySelector("#joke");
+console.log(jokeContainer);
 let cardsEl;
 // empty array to store the last two cards clicked
 let lastTwoCards = [];
@@ -121,7 +123,6 @@ fetch(apiUrl)
       lastTwoCards.push(img);
 
       // IF check if the last two cards match
-
       // Condition to check if the user has selected two cards
       if (lastTwoCards.length === 2) {
         // check if the last two cards match
@@ -143,7 +144,7 @@ fetch(apiUrl)
           cardsNotMatch.card1 = lastTwoCards[0];
           cardsNotMatch.card2 = lastTwoCards[1];
 
-          // if not match after 1 second replace the cards with the background image again
+          // if not match Flip cards back -> after 1 second replace the cards with the background image again
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
@@ -176,3 +177,37 @@ playBackgroundMusic();
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
+
+let joke = function () {
+  fetch(jokesUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.setup); // prints the setup of the joke
+      console.log(data.punchline); // prints the punchline of the joke
+
+      // create a h3 element
+      let jokeQuestionEl = document.createElement("h3");
+      // add a class to the h3 element
+      jokeQuestionEl.classList.add("jokeQuestionEl");
+      // create a p element
+      let jokeAnswerEl = document.createElement("p");
+      // add a class to the p element
+      jokeAnswerEl.classList.add("jokeQuestionEl");
+
+      // add the setup of the joke to the h3 element
+      jokeQuestionEl.textContent = data.setup;
+      // add the punchline of the joke to the p element
+      jokeAnswerEl.textContent = data.punchline;
+
+      // append the h3 and p elements to the joke container
+      jokeContainer.appendChild(jokeQuestionEl);
+      setTimeout(function () {
+        jokeContainer.appendChild(jokeAnswerEl);
+      }, 5000);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+joke();
