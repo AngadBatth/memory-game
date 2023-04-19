@@ -56,7 +56,7 @@ fetch(apiUrl)
       card2: "",
     };
 
-    let backImgSrc = "Assets/imagestoReplace/backCard.jpg";
+    let backImgSrc = "Assets/image/backCard.jpg";
     backImgSrc.alt = "black background with an lightbulb";
 
     // function that creates the background cards
