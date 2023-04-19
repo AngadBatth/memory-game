@@ -2,7 +2,7 @@ var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
 var cardData = [""];
-
+var points = 0;
 let cardsEl;
 
 fetch(apiUrl)
@@ -117,6 +117,8 @@ fetch(apiUrl)
       if (lastTwoCards.length === 2) {
         // check if the last two cards match
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
+          points++
+          console.log(points);
           let match = "Match!";
           console.log({ match });
           // add the matched cards to the matched cards array
