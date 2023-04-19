@@ -1,6 +1,8 @@
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
+let SoundUrl = "https://code.createjs.com/1.0.0/preloadjs.min.js";
+
 var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
@@ -159,3 +161,18 @@ fetch(apiUrl)
   .catch((error) => {
     console.error(error);
   });
+
+// function that plays the background music when the user clicks on the button "Play"
+function playBackgroundMusic() {
+  createjs.Sound.initializeDefaultPlugins();
+  createjs.Sound.registerSound(
+    "Assets/music/Ice & Fire - King Canyon.mp3",
+    "backgroundMusic"
+  );
+  createjs.Sound.play("backgroundMusic", { loop: -1 });
+}
+playBackgroundMusic();
+
+function stopBackgroundMusic() {
+  createjs.Sound.stop();
+}
