@@ -1,3 +1,35 @@
 :root {
-    background-color: #afafaf;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,17,60,1) 50%, rgba(2,0,36,1) 100%);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+#highscores{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Chivo Mono', 'monospace', sans-serif;
+    font-size: 3.5rem;
+    color: #60D394;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+li{
+    font-size: 2.5rem;
+    color: aliceblue;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+ul{
+    padding-bottom: 2rem;
 }
