@@ -19,12 +19,6 @@ fetch(apiUrl)
       (card5 = data.hits[10].webformatURL),
       (card6 = data.hits[11].webformatURL),
     ];
-    console.log(cardData[0]);
-    console.log(cardData[1]);
-    console.log(cardData[2]);
-    console.log(cardData[3]);
-    console.log(cardData[4]);
-    console.log(cardData[5]);
 
     cardsEl = document.querySelector("#cards");
 
@@ -52,7 +46,6 @@ fetch(apiUrl)
     }
     imgSrc.alt = "random images";
 
-    let cardsWon = [];
     // empty array to store the last two cards clicked
     let lastTwoCards = [];
     // empty array to store the matched cards
@@ -63,7 +56,7 @@ fetch(apiUrl)
       card2: "",
     };
 
-    let backImgSrc = "Assets/imagestoReplace/backCard.jpg";
+    let backImgSrc = "Assets/image/backCard.jpg";
     backImgSrc.alt = "black background with an lightbulb";
 
     // function that creates the background cards
@@ -100,8 +93,15 @@ fetch(apiUrl)
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
-      
-        // get the value of the attribute cardImage from the img element
+      // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
+      for (let i = 0; i < cardsMatch.length; i++) {
+        let selectMatch = cardsMatch[i];
+        if (event.target === selectMatch) {
+          return;
+        }
+      }
+
+      // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
       // get the random image from the array based on the position of the background image index-> value of the attribute
       let asset = imgSrc[getAttribute];
@@ -119,7 +119,7 @@ fetch(apiUrl)
       if (lastTwoCards.length === 2) {
         // check if the last two cards match
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
-          points++
+          points++;
           console.log(points);
           let match = "Match!";
           console.log({ match });
@@ -153,5 +153,3 @@ fetch(apiUrl)
   });
 
 // function to not allow the same card twice
-// for with a if inside on the beginin of the click event
-// if cardsMatch return
