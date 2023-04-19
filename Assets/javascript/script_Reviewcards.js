@@ -7,7 +7,6 @@ var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
 let jokeContainer = document.querySelector("#joke");
-console.log(jokeContainer);
 let cardsEl;
 // empty array to store the last two cards clicked
 let lastTwoCards = [];
@@ -183,9 +182,6 @@ let joke = function () {
   fetch(jokesUrl)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.setup); // prints the setup of the joke
-      console.log(data.punchline); // prints the punchline of the joke
-
       // create a h3 element
       let jokeQuestionEl = document.createElement("h3");
       // add a class to the h3 element

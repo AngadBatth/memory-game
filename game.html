@@ -16,8 +16,20 @@
     <main>
       <div id="cards" class="mainCards"></div>
 
-      <button onclick="playBackgroundMusic()">Play Music</button>
-      <button onclick="stopBackgroundMusic()">Stop Music</button>
+      <button
+        id="play-button"
+        class="playMusicButton"
+        onclick="playBackgroundMusic()"
+      >
+        Play Music
+      </button>
+      <button
+        id="stop-play-button"
+        class="stopPlayMusicButton"
+        onclick="stopBackgroundMusic()"
+      >
+        Stop Music
+      </button>
 
       <div id="timer"></div>
       <div class="modal">
