@@ -174,6 +174,7 @@ function playBackgroundMusic() {
 }
 playBackgroundMusic();
 
+// function that stop the background music when the user clicks on the button "Stop"
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
