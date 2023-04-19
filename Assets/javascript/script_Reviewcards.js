@@ -3,13 +3,12 @@ var apiUrl =
 
 var cardData = [""];
 var points = 0;
+let selectedCardsCount = 0;
 let cardsEl;
 
 fetch(apiUrl)
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
-
     // SUGESTION: generate random number to get random image from the array when reload the page?
     cardData = [
       (card1 = data.hits[7].webformatURL),
@@ -93,6 +92,14 @@ fetch(apiUrl)
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
+      // Check if there are already two cards selected
+      if (selectedCardsCount > 1) {
+        console.log(selectedCardsCount);
+        return;
+      }
+      // Increment selectedCardsCount
+      selectedCardsCount++;
+
       // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
       for (let i = 0; i < cardsMatch.length; i++) {
         let selectMatch = cardsMatch[i];
@@ -124,7 +131,9 @@ fetch(apiUrl)
           console.log({ match });
           // add the matched cards to the matched cards array
           cardsMatch.push(lastTwoCards[0], lastTwoCards[1]);
-          // console.log({ cardsMatch });
+          console.log({ cardsMatch });
+          // reset the selected cards count
+          selectedCardsCount = 0;
         } else {
           let noMatch = "No match!";
           console.log({ noMatch });
@@ -137,6 +146,8 @@ fetch(apiUrl)
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
+            // reset the selected cards count
+            selectedCardsCount = 0;
           }, 1000);
         }
 
@@ -148,5 +159,3 @@ fetch(apiUrl)
   .catch((error) => {
     console.error(error);
   });
-
-// function to not allow the same card twice
