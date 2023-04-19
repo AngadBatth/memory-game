@@ -17,11 +17,11 @@
 }
 
 .flex-center {
-    justify-content: center;
+    text-align: center;
     align-items: center;
 }
 
-h1 {
+h1{
     font-family: 'Chivo Mono', 'monospace', sans-serif;
     font-size: 3.5rem;
     color: #60D394;
@@ -56,4 +56,15 @@ h1 {
     box-shadow: 0 0.1rem 0.1rem 0 #000000;
     transition: transform 125ms;
     transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+    h1{
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .playBtn{
+        font-size: 1.3rem;
+    }
 }
