@@ -169,6 +169,7 @@ function playBackgroundMusic() {
     "backgroundMusic"
   );
   createjs.Sound.play("backgroundMusic", { loop: -1 });
+  createjs.Sound.volume = 0.07;
 }
 playBackgroundMusic();
 
