@@ -11,7 +11,7 @@ var apiUrl =
 let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
 
 var initial = "";
-var secondLeft = 90;
+var secondLeft = 91;
 var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
