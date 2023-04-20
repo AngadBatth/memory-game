@@ -1,3 +1,11 @@
+:root {
+    background: linear-gradient(90deg, rgba(0,17,60,1) 0%, rgba(2,0,36,1) 50%, rgba(0,17,60,1) 100%);
+    --textColor: #FFFFFF;
+    --buttonColor: #DB504A;
+    --buttonText: #000;
+    --timerColor: #60D394;
+}
+
 #cards {
     display: flex;
     flex-wrap: wrap;
@@ -6,11 +14,59 @@
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
+    perspective: 1000px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+button {
+    background-color: var(--buttonColor);
+    color: var(--buttonText);
+    font-family: 'Chivo Mono', 'monospace', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 7px;
+    padding: 4px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+button:hover {
+    box-shadow: 0 0.1rem 0.1rem 0 #131313;
+    transition: transform 125ms;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#timer {
+    color: var(--timerColor);
+    font-family: 'Chivo Mono', 'monospace', sans-serif;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 150px;
+}
+
+.card {
+    background-color: rgba(0,17,60,1);
+    transform-style: preserve-3d;
+    transition: transform .3s;
+    margin-right: 6px;
+    margin-bottom: 6px;
 }
 
 .card:active {
-    transform: scale(0.98);
+    transform: scale(0.95);
     transition: transform 0.1s;
+}
+
+.card.flip {
+    transform: rotateY('180deg');
 }
 
 .front-img,
@@ -19,6 +75,7 @@
     height: 300px;
     margin: 10px;
     border-radius: 10px;
+    backface-visibility: hidden;
 }
 
 .custom-modal{
