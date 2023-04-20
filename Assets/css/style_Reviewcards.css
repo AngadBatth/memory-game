@@ -85,3 +85,10 @@ button:hover {
 .custom-modal-background{
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,17,60,1) 50%, rgba(2,0,36,1) 100%);
 }
+
+.score{
+    border: solid white 2px;
+    color: white;
+    float:left;
+    position:fixed;
+}
