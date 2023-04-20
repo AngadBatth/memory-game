@@ -1,5 +1,6 @@
 var timerEl = document.getElementById("timer");
-var modalEl = document.querySelector(".modal");
+var modalEl = document.querySelector(".modal");;
+var pEl = document.querySelector(".your-point")
 var initialEl = document.querySelector(".custom-input");
 var inpName = document.getElementById("inits");
 var submitBtn = document.getElementById("submit");
@@ -10,7 +11,7 @@ var apiUrl =
 let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
 
 var initial = "";
-var secondLeft = 60;
+var secondLeft = 91;
 var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
@@ -144,6 +145,12 @@ fetch(apiUrl)
           console.log({ cardsMatch });
           // reset the selected cards count
           selectedCardsCount = 0;
+          if(imgSrc.length ==cardsMatch.length){
+            cardsEl.innerHTML="";
+           timerEl.innerHTML="";
+           modalEl.setAttribute('class', 'is-active')
+           pEl.textContent = "Your point is " + points + " !";
+          }
         } else {
           let noMatch = "No match!";
           console.log({ noMatch });
@@ -256,6 +263,7 @@ function setTime() {
       cardsEl.innerHTML = "";
       timerEl.innerHTML = "";
       modalEl.setAttribute("class", "is-active");
+      pEl.textContent = "Your point is " + points + " !";
     }
   }, 1000);
 }
