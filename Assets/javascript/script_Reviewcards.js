@@ -1,11 +1,20 @@
+var timerEl = document.getElementById("timer");
+var modalEl = document.querySelector(".modal");
+var initialEl = document.querySelector(".custom-input");
+var inpName = document.getElementById("inits");
+var submitBtn = document.getElementById("submit");
+
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
-let SoundUrl = "https://code.createjs.com/1.0.0/preloadjs.min.js";
+let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
 
+var initial = "";
+var secondLeft = 60;
 var cardData = [""];
 var points = 0;
 let selectedCardsCount = 0;
+let jokeContainer = document.querySelector("#joke");
 let cardsEl;
 // empty array to store the last two cards clicked
 let lastTwoCards = [];
@@ -121,7 +130,6 @@ fetch(apiUrl)
       lastTwoCards.push(img);
 
       // IF check if the last two cards match
-
       // Condition to check if the user has selected two cards
       if (lastTwoCards.length === 2) {
         // check if the last two cards match
@@ -143,7 +151,7 @@ fetch(apiUrl)
           cardsNotMatch.card1 = lastTwoCards[0];
           cardsNotMatch.card2 = lastTwoCards[1];
 
-          // if not match after 1 second replace the cards with the background image again
+          // if not match Flip cards back -> after 1 second replace the cards with the background image again
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
@@ -168,11 +176,106 @@ function playBackgroundMusic() {
     "Assets/music/Ice & Fire - King Canyon.mp3",
     "backgroundMusic"
   );
+
   createjs.Sound.play("backgroundMusic", { loop: -1 });
   createjs.Sound.volume = 0.07;
 }
 playBackgroundMusic();
 
+// Get the button element
+let buttonMusic = document.getElementById("play-button");
+let buttonStopMusic = document.getElementById("stop-play-button");
+
+// Add an event listener to the play music button
+buttonMusic.addEventListener("click", function () {
+  // Call the function to disable the button
+  disableButton();
+  // Call the function to play the background music
+  playBackgroundMusic();
+});
+
+// Add an event listener to the stop play music button
+buttonStopMusic.addEventListener("click", function () {
+  // Call the function to unable the play button again
+  buttonMusic.disabled = false;
+});
+
+// Function to disable the button
+function disableButton() {
+  buttonMusic.disabled = true;
+}
+
+// function that stop the background music when the user clicks on the button "Stop"
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
+
+let joke = function () {
+  fetch(jokesUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // create a h3 element
+      let jokeQuestionEl = document.createElement("h3");
+      // add a class to the h3 element
+      jokeQuestionEl.classList.add("jokeQuestionEl");
+      // create a p element
+      let jokeAnswerEl = document.createElement("p");
+      // add a class to the p element
+      jokeAnswerEl.classList.add("jokeQuestionEl");
+
+      // add the setup of the joke to the h3 element
+      jokeQuestionEl.innerHTML = data.setup;
+      // add the punchline of the joke to the p element
+      jokeAnswerEl.innerHTML = data.punchline;
+
+      // append the h3 and p elements to the joke container
+      jokeContainer.appendChild(jokeQuestionEl);
+      setTimeout(function () {
+        jokeContainer.appendChild(jokeAnswerEl);
+      }, 5000);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+joke();
+
+//This is the fucntion to countdown time.
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondLeft--;
+    timerEl.textContent = "Time: " + secondLeft;
+
+    if (secondLeft < 1) {
+      clearInterval(timerInterval);
+      // add here the function change to the score ranking
+      cardsEl.innerHTML = "";
+      timerEl.innerHTML = "";
+      modalEl.setAttribute("class", "is-active");
+    }
+  }, 1000);
+}
+
+setTime();
+
+// Submit button to save high score and go to high scores page
+submitBtn.addEventListener("click", function highscore() {
+  // Get the current high score array to add to it the new high score
+  var highscore = JSON.parse(localStorage.getItem("highScores2")) || [];
+  // Get the name of user and trim it if theres any spaces before/after
+  var user = inpName.value.trim();
+  // Current score object to store name and score (number of points) of user
+  var currentscore = {
+    name: user,
+    score: points,
+  };
+  // Add the new current score object to the high scores array
+  highscore.push(currentscore);
+  // Add the new highscore array into local storage
+  localStorage.setItem("highScores2", JSON.stringify(highscore));
+
+  initial = initialEl.value.trim();
+  initialEl.setAttribute("type", "text");
+  location.replace("./highscores.html");
+});
