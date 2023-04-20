@@ -15,24 +15,34 @@
   <body>
     <main>
       <div id="cards" class="mainCards"></div>
+
+      <button onclick="playBackgroundMusic()">Play Music</button>
+      <button onclick="stopBackgroundMusic()">Stop Music</button>
+
       <div id="timer"></div>
       <div class="modal">
         <div class="modal-background custom-modal-background"></div>
         <div class="modal-content custom-modal">
           <!-- Any other Bulma elements you want -->
-          <div class="control">
+          <div class="control column is-11-mobile">
             <input
               class="input is-focused is-large custom-input"
               type="text"
               placeholder="Enter your Initial"
             />
-            <div class="control is-justify-content-center is-align-items-center" style="display: flex;">
-              <button class="button is-primary" onclick="moveHighscore()">Submit</button>
+            <div
+              class="control is-justify-content-center is-align-items-center"
+              style="display: flex"
+            >
+              <button class="button is-primary" onclick="moveHighscore()">
+                Submit
+              </button>
             </div>
           </div>
         </div>
       </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SoundJS/1.0.0/soundjs.min.js"></script>
     <script src="./Assets/javascript/script.js"></script>
     <script src="./Assets/javascript/script_Reviewcards.js"></script>
   </body>
