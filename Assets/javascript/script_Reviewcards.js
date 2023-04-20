@@ -168,10 +168,34 @@ function playBackgroundMusic() {
     "Assets/music/Ice & Fire - King Canyon.mp3",
     "backgroundMusic"
   );
+
   createjs.Sound.play("backgroundMusic", { loop: -1 });
   createjs.Sound.volume = 0.07;
 }
 playBackgroundMusic();
+
+// Get the button element
+let buttonMusic = document.getElementById("play-button");
+let buttonStopMusic = document.getElementById("stop-play-button");
+
+// Add an event listener to the play music button
+buttonMusic.addEventListener("click", function () {
+  // Call the function to disable the button
+  disableButton();
+  // Call the function to play the background music
+  playBackgroundMusic();
+});
+
+// Add an event listener to the stop play music button
+buttonStopMusic.addEventListener("click", function () {
+  // Call the function to unable the play button again
+  buttonMusic.disabled = false;
+});
+
+// Function to disable the button
+function disableButton() {
+  buttonMusic.disabled = true;
+}
 
 // function that stop the background music when the user clicks on the button "Stop"
 function stopBackgroundMusic() {
