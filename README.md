@@ -29,4 +29,6 @@ The game uses two server-side APIs and a third API to play background music.
 ## License
 This game is licensed under the MIT License. See the LICENSE file for more details.
 
-# Screenshot and link for the deployed application
+## Screenshot and link for the deployed application
+![Screenshot of deployed application](./assets/Screenshot/xxxxx)
+[Link deployed application](https://angadbatth.github.io/memory-game/)
