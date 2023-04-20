@@ -29,3 +29,4 @@ The game uses two server-side APIs and a third API to play background music.
 ## License
 This game is licensed under the MIT License. See the LICENSE file for more details.
 
+# Screenshot and link for the deployed application
