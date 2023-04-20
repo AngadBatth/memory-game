@@ -192,9 +192,9 @@ let joke = function () {
       jokeAnswerEl.classList.add("jokeQuestionEl");
 
       // add the setup of the joke to the h3 element
-      jokeQuestionEl.textContent = data.setup;
+      jokeQuestionEl.innerHTML = data.setup;
       // add the punchline of the joke to the p element
-      jokeAnswerEl.textContent = data.punchline;
+      jokeAnswerEl.innerHTML = data.punchline;
 
       // append the h3 and p elements to the joke container
       jokeContainer.appendChild(jokeQuestionEl);
