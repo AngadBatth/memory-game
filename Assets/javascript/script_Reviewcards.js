@@ -175,6 +175,7 @@ fetch(apiUrl)
       // Increment selectedCardsCount
       selectedCardsCount++;
       // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
+      // code do not allow the matched cards to be added in the array and finish the game incorrectly
       for (let i = 0; i < cardsMatch.length; i++) {
         let selectMatch = cardsMatch[i];
         if (event.target === selectMatch) {
@@ -305,7 +306,7 @@ function setTime() {
 
     if (secondLeft < 1) {
       clearInterval(timerInterval);
-      // add here the function change to the score ranking
+
       cardsEl.innerHTML = "";
       timerEl.innerHTML = "";
       scoreJokeEl = document.querySelector(".wrapper");
@@ -315,8 +316,9 @@ function setTime() {
     }
   }, 1000);
 }
-
 setTime();
+
+// function clearPage() {}
 
 if (submitBtn) {
   // Submit button to save high score and go to high scores page
