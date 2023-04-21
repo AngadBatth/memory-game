@@ -92,9 +92,9 @@ aside{
     float:left;
     position:-webkit-sticky;
     position:sticky;
-    width:220px;
+    width:15%;
     padding:30px 10px;
-    height:200px;
+    height:10%;
     background-color:var(--buttonColor);
     top:0;
     padding-left:20px;
