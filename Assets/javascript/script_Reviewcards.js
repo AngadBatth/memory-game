@@ -311,11 +311,18 @@ setTime();
 
 if (submitBtn) {
   // Submit button to save high score and go to high scores page
-  submitBtn.addEventListener("click", function highscore() {
+  submitBtn.addEventListener("click", function highscore(event) {
     // Get the current high score array to add to it the new high score
     var highscore = JSON.parse(localStorage.getItem("highScores")) || [];
     // Get the name of user and trim it if theres any spaces before/after
     var user = inpName.value.trim();
+    //showing error message if the input box is empty
+    if(user==""){
+      document.getElementById('inits').classList.add('is-danger');
+      document.getElementById('error_message').setAttribute('style', 'display:block;')
+      event.preventDefault();
+      return;
+    }
     // Current score object to store name and score (number of points) of user
     var currentscore = {
       name: user,
