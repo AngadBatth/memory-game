@@ -69,7 +69,6 @@ button:hover {
     transform: rotateY('180deg');
 }
 
-.front-img,
 .back-img {
     width: 250px;
     height: 300px;
