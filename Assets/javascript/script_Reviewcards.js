@@ -1,6 +1,6 @@
 var timerEl = document.getElementById("timer");
-var modalEl = document.querySelector(".modal");;
-var pEl = document.querySelector(".your-point")
+var modalEl = document.querySelector(".modal");
+var pEl = document.querySelector(".your-point");
 var initialEl = document.querySelector(".custom-input");
 var inpName = document.getElementById("inits");
 var submitBtn = document.getElementById("submit");
@@ -8,27 +8,27 @@ var easyBtn = document.getElementById("easy");
 var mediumBtn = document.getElementById("medium");
 var hardBtn = document.getElementById("hard");
 
-if (easyBtn){
-easyBtn.addEventListener("click", function easy() {
-location.replace('./game.html');
-var level = "easy";
-localStorage.setItem("level", JSON.stringify(level));
-})
-};
-if (mediumBtn){
+if (easyBtn) {
+  easyBtn.addEventListener("click", function easy() {
+    location.replace("./game.html");
+    var level = "easy";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
+if (mediumBtn) {
   mediumBtn.addEventListener("click", function medium() {
-    location.replace('./game.html');
+    location.replace("./game.html");
     var level = "medium";
     localStorage.setItem("level", JSON.stringify(level));
-  })
-  };
-  if (hardBtn){
-    hardBtn.addEventListener("click", function hard() {
-      location.replace('./game.html');
-      var level = "hard";
-      localStorage.setItem("level", JSON.stringify(level));
-    })
-    };
+  });
+}
+if (hardBtn) {
+  hardBtn.addEventListener("click", function hard() {
+    location.replace("./game.html");
+    var level = "hard";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
 
 // Retrieve level from local storage
 var level = JSON.parse(localStorage.getItem("level"));
@@ -37,13 +37,11 @@ console.log(level);
 // Select number of cards based on difficulty chosen
 if (level == "easy") {
   var numImages = 8;
-}
-else if (level == "medium") {
+} else if (level == "medium") {
   var numImages = 12;
-}
-else if (level == "hard") {
+} else if (level == "hard") {
   var numImages = 16;
-};
+}
 
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
@@ -81,6 +79,8 @@ fetch(apiUrl)
       (card4 = data.hits[3].webformatURL),
       (card5 = data.hits[10].webformatURL),
       (card6 = data.hits[11].webformatURL),
+      (card7 = data.hits[15].webformatURL),
+      (card8 = data.hits[18].webformatURL),
     ];
 
     cardsEl = document.querySelector("#cards");
@@ -99,6 +99,10 @@ fetch(apiUrl)
       card5,
       card6,
       card6,
+      card7,
+      card7,
+      card8,
+      card8,
     ];
 
     for (var i = numImages - 1; i > 0; i--) {
@@ -182,11 +186,11 @@ fetch(apiUrl)
           console.log({ cardsMatch });
           // reset the selected cards count
           selectedCardsCount = 0;
-          if(numImages ==cardsMatch.length){
-            cardsEl.innerHTML="";
-           timerEl.innerHTML="";
-           modalEl.setAttribute('class', 'is-active')
-           pEl.textContent = "Your point is " + points + " !";
+          if (numImages == cardsMatch.length) {
+            cardsEl.innerHTML = "";
+            timerEl.innerHTML = "";
+            modalEl.setAttribute("class", "is-active");
+            pEl.textContent = "Your point is " + points + " !";
           }
         } else {
           let noMatch = "No match!";
@@ -308,24 +312,22 @@ setTime();
 if (submitBtn) {
   // Submit button to save high score and go to high scores page
   submitBtn.addEventListener("click", function highscore() {
-  
     // Get the current high score array to add to it the new high score
     var highscore = JSON.parse(localStorage.getItem("highScores")) || [];
     // Get the name of user and trim it if theres any spaces before/after
     var user = inpName.value.trim();
     // Current score object to store name and score (number of points) of user
     var currentscore = {
-        name : user,
-        score : points
+      name: user,
+      score: points,
     };
     // Add the new current score object to the high scores array
     highscore.push(currentscore);
     // Add the new highscore array into local storage
     localStorage.setItem("highScores", JSON.stringify(highscore));
-    
+
     initial = initialEl.value.trim();
     initialEl.setAttribute("type", "text");
-    location.replace('./highscores.html');
-    
-     })
-    };
+    location.replace("./highscores.html");
+  });
+}
