@@ -4,7 +4,7 @@ var pEl = document.querySelector(".your-point")
 var initialEl = document.querySelector(".custom-input");
 var inpName = document.getElementById("inits");
 var submitBtn = document.getElementById("submit");
-
+var score = document.querySelector(".score");
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
@@ -17,6 +17,7 @@ var points = 0;
 let selectedCardsCount = 0;
 let jokeContainer = document.querySelector("#joke");
 let cardsEl;
+score.textContent = "Score: "+points;
 // empty array to store the last two cards clicked
 let lastTwoCards = [];
 // empty array to store the matched cards
@@ -95,6 +96,7 @@ fetch(apiUrl)
     };
 
     createCards();
+    
 
     // function that checks if two images are the same comparing the src "name" attribute
     let isSameImage = function (img1, img2) {
@@ -171,7 +173,7 @@ fetch(apiUrl)
 
         // clear the last two cards array
         lastTwoCards = [];
-        
+      
       }
     });
   })

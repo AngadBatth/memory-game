@@ -76,6 +76,7 @@ button:hover {
     margin: 10px;
     border-radius: 10px;
     backface-visibility: hidden;
+    cursor:pointer;
 }
 
 .custom-modal{
@@ -86,9 +87,27 @@ button:hover {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,17,60,1) 50%, rgba(2,0,36,1) 100%);
 }
 
-.score{
-    border: solid white 2px;
+aside{
     color: white;
     float:left;
-    position:fixed;
+    position:-webkit-sticky;
+    position:sticky;
+    width:220px;
+    padding:30px 10px;
+    height:200px;
+    background-color:var(--buttonColor);
+    top:0;
+    padding-left:20px;
+    font-family: 'Chivo Mono', 'monospace', sans-serif;
+    font-size: 1.0rem;
+}
+
+.jokeClass{
+    padding-top:20px;
+    
+}
+
+.wrapper{
+    display:flex;
+    justify-content: space-between;
 }
