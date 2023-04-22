@@ -124,20 +124,18 @@ aside {
 
 
 /*change this part if need to change media query for game */
-@media screen and (max-width: 1420px) {
+@media screen and (max-width: 2100px) {
 
     .card,
-    .front-img,
     .back-img {
-        width: 150px;
-        height: 150px;
+        width: 230px;
+        height: 275px;
     }
 }
 
 @media screen and (max-width: 810px) {
 
     .card,
-    .front-img,
     .back-img {
         width: 200px;
         height: 250px;
@@ -163,7 +161,6 @@ aside {
 @media screen and (max-width: 658px) {
 
     .card,
-    .front-img,
     .back-img {
         width: 150px;
         height: 180px;
