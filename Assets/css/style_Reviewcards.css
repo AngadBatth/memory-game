@@ -1,5 +1,5 @@
 :root {
-    background: linear-gradient(90deg, rgba(0,17,60,1) 0%, rgba(2,0,36,1) 50%, rgba(0,17,60,1) 100%);
+    background: linear-gradient(90deg, rgba(0, 17, 60, 1) 0%, rgba(2, 0, 36, 1) 50%, rgba(0, 17, 60, 1) 100%);
     --textColor: #FFFFFF;
     --buttonColor: #DB504A;
     --buttonText: #000;
@@ -53,7 +53,7 @@ button:hover {
 }
 
 .card {
-    background-color: rgba(0,17,60,1);
+    background-color: rgba(0, 17, 60, 1);
     transform-style: preserve-3d;
     transition: transform .3s;
     margin-right: 6px;
@@ -75,145 +75,173 @@ button:hover {
     width: 250px;
     height: 300px;
     margin: 10px;
+    padding: 5px;
     border-radius: 10px;
     backface-visibility: hidden;
-    cursor:pointer;
+    cursor: pointer;
     object-fit: cover;
 }
 
-.custom-modal{
+.custom-modal {
     padding-top: 5%;
 }
 
-.custom-modal-background{
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,17,60,1) 50%, rgba(2,0,36,1) 100%);
+.custom-modal-background {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 17, 60, 1) 50%, rgba(2, 0, 36, 1) 100%);
 }
 
-aside{
+aside {
     color: white;
-    float:left;
-    position:-webkit-sticky;
-    position:sticky;
-    width:15%;
-    padding:30px 20px;
-    height:10%;
-    background-color:var(--buttonColor);
-    top:0;
+    float: left;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 15%;
+    padding: 30px 20px;
+    height: 10%;
+    background-color: var(--buttonColor);
+    top: 0;
     font-family: 'Chivo Mono', 'monospace', sans-serif;
     font-size: 1.0rem;
-    border-radius: 10px ;
+    border-radius: 10px;
 }
-.score{
+
+.score {
     background-color: yellow;
     color: black;
     padding: 5px;
     border-radius: 10px;
 }
 
-.jokeClass{
-    padding-top:20px;
-    
+.jokeClass {
+    padding-top: 20px;
+
 }
 
-.wrapper{
-    display:flex;
+.wrapper {
+    display: flex;
     justify-content: space-between;
 }
 
 
 /*change this part if need to change media query for game */
-@media  screen and  (max-width: 810px) {
-    .card, 
+@media screen and (max-width: 1420px) {
+
+    .card,
+    .front-img,
     .back-img {
-        width: 200px;
-        height:250px;
+        width: 230px;
+        height: 270px;
     }
 }
 
-@media  screen and  (max-width: 768px) {
-    #timer{
+@media screen and (max-width: 810px) {
+
+    .card,
+    .front-img,
+    .back-img {
+        width: 200px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #timer {
         font-size: 1.8rem;
     }
-    aside{
-        width:15%;
-        padding:5px 5px;
-        height:10%;
-        background-color:var(--buttonColor);
-        top:0;
+
+    aside {
+        width: 15%;
+        padding: 5px 5px;
+        height: 10%;
+        background-color: var(--buttonColor);
+        top: 0;
         font-family: 'Chivo Mono', 'monospace', sans-serif;
         font-size: 0.7rem;
     }
 }
 
-@media  screen and  (max-width: 658px) {
-    .card, 
+@media screen and (max-width: 658px) {
+
+    .card,
+    .front-img,
     .back-img {
         width: 150px;
-        height:180px;
+        height: 180px;
     }
 
-    header{
+    header {
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    
+
 }
 
-@media  screen and  (max-width: 509px) {
-    #cards{
+@media screen and (max-width: 509px) {
+    #cards {
         padding: 0;
     }
-    button{
+
+    button {
         margin: 0;
     }
-    aside{
-        padding:6px 4px;
-        height:10%;
+
+    aside {
+        padding: 6px 4px;
+        height: 10%;
         font-size: 0.5rem;
     }
-    .card, 
+
+    .card,
     .back-img {
         width: 70px;
-        height:100px;
+        height: 100px;
     }
 }
 
-@media  screen and  (max-width: 403px) {
-    .card, 
+@media screen and (max-width: 403px) {
+
+    .card,
     .back-img {
         width: 110px;
-        height:132px;
+        height: 132px;
     }
-    .jokeClass{
-        padding-top:20px;
-        
+
+    .jokeClass {
+        padding-top: 20px;
+
     }
-    aside{
-        width:15%;
-        padding:5px 3px;
-        height:10%;
+
+    aside {
+        width: 15%;
+        padding: 5px 3px;
+        height: 10%;
         font-size: 0.3rem;
     }
 }
-@media  screen and  (max-width: 376px) {
-    .card,  
+
+@media screen and (max-width: 376px) {
+
+    .card,
     .back-img {
         width: 70px;
-        height:100px;
+        height: 100px;
     }
-    .jokeClass{
-        padding-top:20px;
-        
+
+    .jokeClass {
+        padding-top: 20px;
+
     }
-    aside{
-        width:15%;
-        padding:5px 3px;
-        height:10%;
+
+    aside {
+        width: 15%;
+        padding: 5px 3px;
+        height: 10%;
         font-size: 0.30rem;
     }
-    .jokeClass{
-        padding-top:10px;
-        
+
+    .jokeClass {
+        padding-top: 10px;
+
     }
 }
