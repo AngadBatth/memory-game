@@ -230,7 +230,6 @@ fetch(apiUrl)
   .catch((error) => {
     console.error(error);
   });
-
 // function that plays the background music when the user clicks on the button "Play"
 function playBackgroundMusic() {
   createjs.Sound.initializeDefaultPlugins();

@@ -129,8 +129,8 @@ aside {
     .card,
     .front-img,
     .back-img {
-        width: 230px;
-        height: 270px;
+        width: 150px;
+        height: 150px;
     }
 }
 
