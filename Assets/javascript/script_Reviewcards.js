@@ -7,6 +7,7 @@ var submitBtn = document.getElementById("submit");
 var easyBtn = document.getElementById("easy");
 var mediumBtn = document.getElementById("medium");
 var hardBtn = document.getElementById("hard");
+var cardValue = [];
 
 if (easyBtn) {
   easyBtn.addEventListener("click", function easy() {
@@ -144,31 +145,36 @@ fetch(apiUrl)
     // function that checks if two images are the same comparing the src "name" attribute
     let isSameImage = function (img1, img2) {
       return img1.getAttribute("src") === img2.getAttribute("src");
-    };  
+    };
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
-      
-      
       // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
       // get the random image from the array based on the position of the background image index-> value of the attribute
       let asset = imgSrc[getAttribute];
       // event.target get the clicked image element
       let img = event.target;
-      // when the background image is clicked, replace it with the random image from the array
-      img.setAttribute("src", asset); 
-      // add the clicked image to the last two cards array
-      lastTwoCards.push(img);  
-      console.log(lastTwoCards);  
+      //uses the cardimage to identify card selected
+      cardImageVal = img.getAttribute("cardimage");
       // Check if there are already two cards selected
       if (selectedCardsCount > 1) {
         console.log(selectedCardsCount);
         return;
       }
+      //Checks if the same card was selected
+      cardValue.push(cardImageVal);
+      //Prevents cards from being matched with itself
+      if(cardValue[0] == cardValue[1]){
+        cardValue.pop();
+        return;
+      }
+      // when the background image is clicked, replace it with the random image from the array
+      img.setAttribute("src", asset); 
+      // add the clicked image to the last two cards array
+      lastTwoCards.push(img);   
       // Increment selectedCardsCount
       selectedCardsCount++;
-
       // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
       for (let i = 0; i < cardsMatch.length; i++) {
         let selectMatch = cardsMatch[i];
@@ -214,7 +220,6 @@ fetch(apiUrl)
             selectedCardsCount = 0;
           }, 1000);
         }
-
         // clear the last two cards array
         lastTwoCards = [];
         cardValue = [];
