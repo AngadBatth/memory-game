@@ -49,7 +49,7 @@ button:hover {
     font-size: 2.5rem;
     margin-top: 20px;
     margin-bottom: 30px;
-    margin-right: 150px;
+    margin-right: 3%;
 }
 
 .card {
@@ -58,6 +58,8 @@ button:hover {
     transition: transform .3s;
     margin-right: 6px;
     margin-bottom: 6px;
+    width: 250px;
+    height: 300px;
 }
 
 .card:active {
@@ -84,4 +86,54 @@ button:hover {
 
 .custom-modal-background{
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,17,60,1) 50%, rgba(2,0,36,1) 100%);
+}
+
+
+/*change this part if need to change media query for game */
+@media  screen and  (max-width: 810px) {
+    .card, 
+    .front-img,
+    .back-img {
+        width: 200px;
+        height:250px;
+    }
+}
+
+@media  screen and  (max-width: 768px) {
+    #timer{
+        font-size: 1.8rem;
+    }
+}
+
+@media  screen and  (max-width: 658px) {
+    .card, 
+    .front-img,
+    .back-img {
+        width: 150px;
+        height:180px;
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media  screen and  (max-width: 509px) {
+    #cards{
+        padding: 0;
+    }
+    button{
+        margin: 0;
+    }
+}
+
+@media  screen and  (max-width: 403px) {
+    .card, 
+    .front-img,
+    .back-img {
+        width: 110px;
+        height:132px;
+    }
 }
