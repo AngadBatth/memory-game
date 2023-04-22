@@ -36,30 +36,28 @@ let cardsNotMatch = {
 let backImgSrc = "Assets/image/backCard.jpg";
 backImgSrc.alt = "black background with an lightbulb";
 
-function levels() {
-  if (easyBtn) {
-    easyBtn.addEventListener("click", function easy() {
-      location.replace("./game.html");
-      var level = "easy";
-      localStorage.setItem("level", JSON.stringify(level));
-    });
-  }
-  if (mediumBtn) {
-    mediumBtn.addEventListener("click", function medium() {
-      location.replace("./game.html");
-      var level = "medium";
-      localStorage.setItem("level", JSON.stringify(level));
-    });
-  }
-  if (hardBtn) {
-    hardBtn.addEventListener("click", function hard() {
-      location.replace("./game.html");
-      var level = "hard";
-      localStorage.setItem("level", JSON.stringify(level));
-    });
-  }
+if (easyBtn) {
+  easyBtn.addEventListener("click", function easy() {
+    location.replace("./game.html");
+    var level = "easy";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
 }
-levels();
+if (mediumBtn) {
+  mediumBtn.addEventListener("click", function medium() {
+    location.replace("./game.html");
+    var level = "medium";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
+if (hardBtn) {
+  hardBtn.addEventListener("click", function hard() {
+    location.replace("./game.html");
+    var level = "hard";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
+
 // Retrieve level from local storage
 var level = JSON.parse(localStorage.getItem("level"));
 
@@ -149,6 +147,7 @@ fetch(apiUrl)
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
+<<<<<<< HEAD
       // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
       // get the random image from the array based on the position of the background image index-> value of the attribute
@@ -157,8 +156,11 @@ fetch(apiUrl)
       let img = event.target;
       //uses the cardimage to identify card selected
       cardImageVal = img.getAttribute("cardimage");
+=======
+>>>>>>> 4660be9 (highscore)
       // Check if there are already two cards selected
       if (selectedCardsCount > 1) {
+        console.log(selectedCardsCount);
         return;
       }
       //Checks if the same card was selected
@@ -175,7 +177,6 @@ fetch(apiUrl)
       // Increment selectedCardsCount
       selectedCardsCount++;
       // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
-      // code do not allow the matched cards to be added in the array and finish the game incorrectly
       for (let i = 0; i < cardsMatch.length; i++) {
         let selectMatch = cardsMatch[i];
         if (event.target === selectMatch) {
@@ -197,11 +198,12 @@ fetch(apiUrl)
 
           // reset the selected cards count
           selectedCardsCount = 0;
+
           if (numImages == cardsMatch.length) {
             cardsEl.innerHTML = "";
             timerEl.innerHTML = "";
             modalEl.setAttribute("class", "is-active");
-            pEl.textContent = "You got " + points + " matches!";
+            pEl.textContent = "Your got " + points + " matches!";
           }
         } else {
           let noMatch = "No match!";
@@ -306,7 +308,7 @@ function setTime() {
 
     if (secondLeft < 1) {
       clearInterval(timerInterval);
-
+      // add here the function change to the score ranking
       cardsEl.innerHTML = "";
       timerEl.innerHTML = "";
       scoreJokeEl = document.querySelector(".wrapper");
@@ -316,9 +318,8 @@ function setTime() {
     }
   }, 1000);
 }
-setTime();
 
-// function clearPage() {}
+setTime();
 
 if (submitBtn) {
   // Submit button to save high score and go to high scores page
