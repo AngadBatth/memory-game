@@ -9,33 +9,6 @@ var mediumBtn = document.getElementById("medium");
 var hardBtn = document.getElementById("hard");
 var cardValue = [];
 
-var apiUrl =
-  "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
-
-let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
-
-var initial = "";
-var secondLeft = 91;
-var cardData = [""];
-var points = 0;
-score.textContent = "Score: " + points;
-let selectedCardsCount = 0;
-let jokeContainer = document.querySelector("#joke");
-let cardsEl;
-
-// empty array to store the last two cards clicked
-let lastTwoCards = [];
-// empty array to store the matched cards
-let cardsMatch = [];
-// empty object to store the cards that don't match
-let cardsNotMatch = {
-  card1: "",
-  card2: "",
-};
-
-let backImgSrc = "Assets/image/backCard.jpg";
-backImgSrc.alt = "black background with an lightbulb";
-
 if (easyBtn) {
   easyBtn.addEventListener("click", function easy() {
     location.replace("./game.html");
@@ -69,6 +42,33 @@ if (level == "easy") {
 } else if (level == "hard") {
   var numImages = 16;
 }
+var score = document.querySelector(".score");
+var apiUrl =
+  "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
+
+let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
+
+var initial = "";
+var secondLeft = 91;
+var cardData = [""];
+var points = 0;
+score.textContent = "Score: " + points;
+let selectedCardsCount = 0;
+let jokeContainer = document.querySelector("#joke");
+let cardsEl;
+
+// empty array to store the last two cards clicked
+let lastTwoCards = [];
+// empty array to store the matched cards
+let cardsMatch = [];
+// empty object to store the cards that don't match
+let cardsNotMatch = {
+  card1: "",
+  card2: "",
+};
+
+let backImgSrc = "Assets/image/backCard.jpg";
+backImgSrc.alt = "black background with an lightbulb";
 
 fetch(apiUrl)
   .then((res) => res.json())
@@ -81,7 +81,7 @@ fetch(apiUrl)
       (card4 = data.hits[3].webformatURL),
       (card5 = data.hits[10].webformatURL),
       (card6 = data.hits[11].webformatURL),
-      (card7 = data.hits[19].webformatURL),
+      (card7 = data.hits[15].webformatURL),
       (card8 = data.hits[18].webformatURL),
     ];
 
@@ -147,7 +147,6 @@ fetch(apiUrl)
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
-<<<<<<< HEAD
       // get the value of the attribute cardImage from the img element
       let getAttribute = event.target.getAttribute("cardImage");
       // get the random image from the array based on the position of the background image index-> value of the attribute
@@ -156,11 +155,8 @@ fetch(apiUrl)
       let img = event.target;
       //uses the cardimage to identify card selected
       cardImageVal = img.getAttribute("cardimage");
-=======
->>>>>>> 4660be9 (highscore)
       // Check if there are already two cards selected
       if (selectedCardsCount > 1) {
-        console.log(selectedCardsCount);
         return;
       }
       //Checks if the same card was selected
@@ -189,8 +185,8 @@ fetch(apiUrl)
         // check if the last two cards match
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
           points++;
-          score.textContent = "Score: " + points;
 
+          score.textContent = "Score: " + points;
           let match = "Match!";
 
           // add the matched cards to the matched cards array
@@ -198,7 +194,6 @@ fetch(apiUrl)
 
           // reset the selected cards count
           selectedCardsCount = 0;
-
           if (numImages == cardsMatch.length) {
             cardsEl.innerHTML = "";
             timerEl.innerHTML = "";
@@ -230,6 +225,7 @@ fetch(apiUrl)
   .catch((error) => {
     console.error(error);
   });
+
 // function that plays the background music when the user clicks on the button "Play"
 function playBackgroundMusic() {
   createjs.Sound.initializeDefaultPlugins();
@@ -270,6 +266,7 @@ function disableButton() {
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
+
 // create a h3 element
 let jokeQuestionEl = document.createElement("h3");
 // create a p element
@@ -313,7 +310,7 @@ function setTime() {
       scoreJokeEl = document.querySelector(".wrapper");
       scoreJokeEl.remove();
       modalEl.setAttribute("class", "is-active");
-      pEl.textContent = "You got " + points + " matches!";
+      pEl.textContent = "Your got " + points + " matches!";
     }
   }, 1000);
 }
