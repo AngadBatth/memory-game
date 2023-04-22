@@ -81,7 +81,7 @@ fetch(apiUrl)
       (card4 = data.hits[3].webformatURL),
       (card5 = data.hits[10].webformatURL),
       (card6 = data.hits[11].webformatURL),
-      (card7 = data.hits[15].webformatURL),
+      (card7 = data.hits[19].webformatURL),
       (card8 = data.hits[18].webformatURL),
     ];
 
