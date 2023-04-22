@@ -73,7 +73,6 @@ backImgSrc.alt = "black background with an lightbulb";
 fetch(apiUrl)
   .then((res) => res.json())
   .then((data) => {
-    // SUGESTION: generate random number to get random image from the array when reload the page?
     cardData = [
       (card1 = data.hits[7].webformatURL),
       (card2 = data.hits[1].webformatURL),
