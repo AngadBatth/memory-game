@@ -55,7 +55,7 @@ h1 {
 
 .playBtn {
     font-family: 'Chivo Mono', 'monospace', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0.2rem 0;
     width: 4.5rem;
     text-align: center;
@@ -64,6 +64,7 @@ h1 {
     background-color: var(--btnColor);
     color: var(--btnText);
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .playBtn:hover {

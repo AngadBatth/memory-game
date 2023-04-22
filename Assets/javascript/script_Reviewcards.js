@@ -1,9 +1,47 @@
 var timerEl = document.getElementById("timer");
-var modalEl = document.querySelector(".modal");;
-var pEl = document.querySelector(".your-point")
+var modalEl = document.querySelector(".modal");
+var pEl = document.querySelector(".your-point");
 var initialEl = document.querySelector(".custom-input");
 var inpName = document.getElementById("inits");
 var submitBtn = document.getElementById("submit");
+var easyBtn = document.getElementById("easy");
+var mediumBtn = document.getElementById("medium");
+var hardBtn = document.getElementById("hard");
+
+if (easyBtn) {
+  easyBtn.addEventListener("click", function easy() {
+    location.replace("./game.html");
+    var level = "easy";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
+if (mediumBtn) {
+  mediumBtn.addEventListener("click", function medium() {
+    location.replace("./game.html");
+    var level = "medium";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
+if (hardBtn) {
+  hardBtn.addEventListener("click", function hard() {
+    location.replace("./game.html");
+    var level = "hard";
+    localStorage.setItem("level", JSON.stringify(level));
+  });
+}
+
+// Retrieve level from local storage
+var level = JSON.parse(localStorage.getItem("level"));
+console.log(level);
+
+// Select number of cards based on difficulty chosen
+if (level == "easy") {
+  var numImages = 8;
+} else if (level == "medium") {
+  var numImages = 12;
+} else if (level == "hard") {
+  var numImages = 16;
+}
 var score = document.querySelector(".score");
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
@@ -14,10 +52,11 @@ var initial = "";
 var secondLeft = 91;
 var cardData = [""];
 var points = 0;
+score.textContent = "Score: "+ points;
 let selectedCardsCount = 0;
 let jokeContainer = document.querySelector("#joke");
 let cardsEl;
-score.textContent = "Score: "+points;
+
 // empty array to store the last two cards clicked
 let lastTwoCards = [];
 // empty array to store the matched cards
@@ -42,6 +81,8 @@ fetch(apiUrl)
       (card4 = data.hits[3].webformatURL),
       (card5 = data.hits[10].webformatURL),
       (card6 = data.hits[11].webformatURL),
+      (card7 = data.hits[15].webformatURL),
+      (card8 = data.hits[18].webformatURL),
     ];
 
     cardsEl = document.querySelector("#cards");
@@ -60,9 +101,13 @@ fetch(apiUrl)
       card5,
       card6,
       card6,
+      card7,
+      card7,
+      card8,
+      card8,
     ];
 
-    for (var i = imgSrc.length - 1; i > 0; i--) {
+    for (var i = numImages - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
       var randomOrder = imgSrc[i];
       imgSrc[i] = imgSrc[j];
@@ -72,8 +117,6 @@ fetch(apiUrl)
 
     // function that creates the background cards
     let createCards = function () {
-      let numImages = 12;
-
       // loop through the number of cards we want to display
       for (let i = 0; i < numImages; i++) {
         // create a div element
@@ -101,10 +144,23 @@ fetch(apiUrl)
     // function that checks if two images are the same comparing the src "name" attribute
     let isSameImage = function (img1, img2) {
       return img1.getAttribute("src") === img2.getAttribute("src");
-    };
+    };  
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
+      
+      
+      // get the value of the attribute cardImage from the img element
+      let getAttribute = event.target.getAttribute("cardImage");
+      // get the random image from the array based on the position of the background image index-> value of the attribute
+      let asset = imgSrc[getAttribute];
+      // event.target get the clicked image element
+      let img = event.target;
+      // when the background image is clicked, replace it with the random image from the array
+      img.setAttribute("src", asset); 
+      // add the clicked image to the last two cards array
+      lastTwoCards.push(img);  
+      console.log(lastTwoCards);  
       // Check if there are already two cards selected
       if (selectedCardsCount > 1) {
         console.log(selectedCardsCount);
@@ -120,19 +176,6 @@ fetch(apiUrl)
           return;
         }
       }
-
-      // get the value of the attribute cardImage from the img element
-      let getAttribute = event.target.getAttribute("cardImage");
-      // get the random image from the array based on the position of the background image index-> value of the attribute
-      let asset = imgSrc[getAttribute];
-      // event.target get the clicked image element
-      let img = event.target;
-      // when the background image is clicked, replace it with the random image from the array
-      img.setAttribute("src", asset); 
-      // add the clicked image to the last two cards array
-      lastTwoCards.push(img);
-      
-
       // IF check if the last two cards match
       // Condition to check if the user has selected two cards
       if (lastTwoCards.length === 2) {
@@ -140,6 +183,7 @@ fetch(apiUrl)
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
           points++;
           console.log(points);
+          score.textContent = "Score: "+ points;
           let match = "Match!";
           console.log({ match });
           // add the matched cards to the matched cards array
@@ -147,11 +191,11 @@ fetch(apiUrl)
           console.log({ cardsMatch });
           // reset the selected cards count
           selectedCardsCount = 0;
-          if(imgSrc.length ==cardsMatch.length){
-            cardsEl.innerHTML="";
-           timerEl.innerHTML="";
-           modalEl.setAttribute('class', 'is-active')
-           pEl.textContent = "Your point is " + points + " !";
+          if (numImages == cardsMatch.length) {
+            cardsEl.innerHTML = "";
+            timerEl.innerHTML = "";
+            modalEl.setAttribute("class", "is-active");
+            pEl.textContent = "Your point is " + points + " !";
           }
         } else {
           let noMatch = "No match!";
@@ -173,7 +217,7 @@ fetch(apiUrl)
 
         // clear the last two cards array
         lastTwoCards = [];
-      
+        cardValue = [];
       }
     });
   })
@@ -221,25 +265,22 @@ function disableButton() {
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
-
+// create a h3 element
+      let jokeQuestionEl = document.createElement("h3");
+// create a p element
+      let jokeAnswerEl = document.createElement("p");
 let joke = function () {
   fetch(jokesUrl)
     .then((response) => response.json())
     .then((data) => {
-      // create a h3 element
-      let jokeQuestionEl = document.createElement("h3");
       // add a class to the h3 element
       jokeQuestionEl.classList.add("jokeQuestionEl");
-      // create a p element
-      let jokeAnswerEl = document.createElement("p");
       // add a class to the p element
       jokeAnswerEl.classList.add("jokeQuestionEl");
-
       // add the setup of the joke to the h3 element
       jokeQuestionEl.innerHTML = data.setup;
       // add the punchline of the joke to the p element
       jokeAnswerEl.innerHTML = data.punchline;
-
       // append the h3 and p elements to the joke container
       jokeContainer.appendChild(jokeQuestionEl);
       setTimeout(function () {
@@ -264,6 +305,8 @@ function setTime() {
       // add here the function change to the score ranking
       cardsEl.innerHTML = "";
       timerEl.innerHTML = "";
+      scoreJokeEl = document.querySelector(".wrapper");
+      scoreJokeEl.remove();
       modalEl.setAttribute("class", "is-active");
       pEl.textContent = "Your point is " + points + " !";
     }
@@ -272,23 +315,32 @@ function setTime() {
 
 setTime();
 
-// Submit button to save high score and go to high scores page
-submitBtn.addEventListener("click", function highscore() {
-  // Get the current high score array to add to it the new high score
-  var highscore = JSON.parse(localStorage.getItem("highScores2")) || [];
-  // Get the name of user and trim it if theres any spaces before/after
-  var user = inpName.value.trim();
-  // Current score object to store name and score (number of points) of user
-  var currentscore = {
-    name: user,
-    score: points,
-  };
-  // Add the new current score object to the high scores array
-  highscore.push(currentscore);
-  // Add the new highscore array into local storage
-  localStorage.setItem("highScores2", JSON.stringify(highscore));
+if (submitBtn) {
+  // Submit button to save high score and go to high scores page
+  submitBtn.addEventListener("click", function highscore(event) {
+    // Get the current high score array to add to it the new high score
+    var highscore = JSON.parse(localStorage.getItem("highScores")) || [];
+    // Get the name of user and trim it if theres any spaces before/after
+    var user = inpName.value.trim();
+    //showing error message if the input box is empty
+    if(user==""){
+      document.getElementById('inits').classList.add('is-danger');
+      document.getElementById('error_message').setAttribute('style', 'display:block;')
+      event.preventDefault();
+      return;
+    }
+    // Current score object to store name and score (number of points) of user
+    var currentscore = {
+      name: user,
+      score: points,
+    };
+    // Add the new current score object to the high scores array
+    highscore.push(currentscore);
+    // Add the new highscore array into local storage
+    localStorage.setItem("highScores", JSON.stringify(highscore));
 
-  initial = initialEl.value.trim();
-  initialEl.setAttribute("type", "text");
-  location.replace("./highscores.html");
-});
+    initial = initialEl.value.trim();
+    initialEl.setAttribute("type", "text");
+    location.replace("./highscores.html");
+  });
+}

@@ -49,7 +49,7 @@ button:hover {
     font-size: 2.5rem;
     margin-top: 20px;
     margin-bottom: 30px;
-    margin-right: 150px;
+    margin-right: 3%;
 }
 
 .card {
@@ -58,6 +58,8 @@ button:hover {
     transition: transform .3s;
     margin-right: 6px;
     margin-bottom: 6px;
+    width: 250px;
+    height: 300px;
 }
 
 .card:active {
@@ -76,6 +78,7 @@ button:hover {
     border-radius: 10px;
     backface-visibility: hidden;
     cursor:pointer;
+    object-fit: cover;
 }
 
 .custom-modal{
@@ -92,13 +95,19 @@ aside{
     position:-webkit-sticky;
     position:sticky;
     width:15%;
-    padding:30px 10px;
+    padding:30px 20px;
     height:10%;
     background-color:var(--buttonColor);
     top:0;
-    padding-left:20px;
     font-family: 'Chivo Mono', 'monospace', sans-serif;
     font-size: 1.0rem;
+    border-radius: 10px ;
+}
+.score{
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .jokeClass{
@@ -109,4 +118,102 @@ aside{
 .wrapper{
     display:flex;
     justify-content: space-between;
+}
+
+
+/*change this part if need to change media query for game */
+@media  screen and  (max-width: 810px) {
+    .card, 
+    .back-img {
+        width: 200px;
+        height:250px;
+    }
+}
+
+@media  screen and  (max-width: 768px) {
+    #timer{
+        font-size: 1.8rem;
+    }
+    aside{
+        width:15%;
+        padding:5px 5px;
+        height:10%;
+        background-color:var(--buttonColor);
+        top:0;
+        font-family: 'Chivo Mono', 'monospace', sans-serif;
+        font-size: 0.7rem;
+    }
+}
+
+@media  screen and  (max-width: 658px) {
+    .card, 
+    .back-img {
+        width: 150px;
+        height:180px;
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+}
+
+@media  screen and  (max-width: 509px) {
+    #cards{
+        padding: 0;
+    }
+    button{
+        margin: 0;
+    }
+    aside{
+        padding:6px 4px;
+        height:10%;
+        font-size: 0.5rem;
+    }
+    .card, 
+    .back-img {
+        width: 70px;
+        height:100px;
+    }
+}
+
+@media  screen and  (max-width: 403px) {
+    .card, 
+    .back-img {
+        width: 110px;
+        height:132px;
+    }
+    .jokeClass{
+        padding-top:20px;
+        
+    }
+    aside{
+        width:15%;
+        padding:5px 3px;
+        height:10%;
+        font-size: 0.3rem;
+    }
+}
+@media  screen and  (max-width: 376px) {
+    .card,  
+    .back-img {
+        width: 70px;
+        height:100px;
+    }
+    .jokeClass{
+        padding-top:20px;
+        
+    }
+    aside{
+        width:15%;
+        padding:5px 3px;
+        height:10%;
+        font-size: 0.30rem;
+    }
+    .jokeClass{
+        padding-top:10px;
+        
+    }
 }
