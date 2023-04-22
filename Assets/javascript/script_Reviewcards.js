@@ -42,7 +42,7 @@ if (level == "easy") {
 } else if (level == "hard") {
   var numImages = 16;
 }
-
+var score = document.querySelector(".score");
 var apiUrl =
   "https://pixabay.com/api/?key=35470846-6ad7c60aedc0594e1fbfdcde7&q=pet+dogs&image_type=photo";
 
@@ -52,9 +52,11 @@ var initial = "";
 var secondLeft = 91;
 var cardData = [""];
 var points = 0;
+score.textContent = "Score: "+ points;
 let selectedCardsCount = 0;
 let jokeContainer = document.querySelector("#joke");
 let cardsEl;
+
 // empty array to store the last two cards clicked
 let lastTwoCards = [];
 // empty array to store the matched cards
@@ -137,14 +139,28 @@ fetch(apiUrl)
     };
 
     createCards();
+    
 
     // function that checks if two images are the same comparing the src "name" attribute
     let isSameImage = function (img1, img2) {
       return img1.getAttribute("src") === img2.getAttribute("src");
-    };
+    };  
 
     // Click event replaces the background cards with random images in the index position
     cardsEl.addEventListener("click", function (event) {
+      
+      
+      // get the value of the attribute cardImage from the img element
+      let getAttribute = event.target.getAttribute("cardImage");
+      // get the random image from the array based on the position of the background image index-> value of the attribute
+      let asset = imgSrc[getAttribute];
+      // event.target get the clicked image element
+      let img = event.target;
+      // when the background image is clicked, replace it with the random image from the array
+      img.setAttribute("src", asset); 
+      // add the clicked image to the last two cards array
+      lastTwoCards.push(img);  
+      console.log(lastTwoCards);  
       // Check if there are already two cards selected
       if (selectedCardsCount > 1) {
         console.log(selectedCardsCount);
@@ -160,18 +176,6 @@ fetch(apiUrl)
           return;
         }
       }
-
-      // get the value of the attribute cardImage from the img element
-      let getAttribute = event.target.getAttribute("cardImage");
-      // get the random image from the array based on the position of the background image index-> value of the attribute
-      let asset = imgSrc[getAttribute];
-      // event.target get the clicked image element
-      let img = event.target;
-      // when the background image is clicked, replace it with the random image from the array
-      img.setAttribute("src", asset);
-      // add the clicked image to the last two cards array
-      lastTwoCards.push(img);
-
       // IF check if the last two cards match
       // Condition to check if the user has selected two cards
       if (lastTwoCards.length === 2) {
@@ -179,6 +183,7 @@ fetch(apiUrl)
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
           points++;
           console.log(points);
+          score.textContent = "Score: "+ points;
           let match = "Match!";
           console.log({ match });
           // add the matched cards to the matched cards array
@@ -204,6 +209,7 @@ fetch(apiUrl)
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
+            
             // reset the selected cards count
             selectedCardsCount = 0;
           }, 1000);
@@ -211,6 +217,7 @@ fetch(apiUrl)
 
         // clear the last two cards array
         lastTwoCards = [];
+        cardValue = [];
       }
     });
   })
@@ -258,25 +265,22 @@ function disableButton() {
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
-
+// create a h3 element
+      let jokeQuestionEl = document.createElement("h3");
+// create a p element
+      let jokeAnswerEl = document.createElement("p");
 let joke = function () {
   fetch(jokesUrl)
     .then((response) => response.json())
     .then((data) => {
-      // create a h3 element
-      let jokeQuestionEl = document.createElement("h3");
       // add a class to the h3 element
       jokeQuestionEl.classList.add("jokeQuestionEl");
-      // create a p element
-      let jokeAnswerEl = document.createElement("p");
       // add a class to the p element
       jokeAnswerEl.classList.add("jokeQuestionEl");
-
       // add the setup of the joke to the h3 element
       jokeQuestionEl.innerHTML = data.setup;
       // add the punchline of the joke to the p element
       jokeAnswerEl.innerHTML = data.punchline;
-
       // append the h3 and p elements to the joke container
       jokeContainer.appendChild(jokeQuestionEl);
       setTimeout(function () {
@@ -301,6 +305,8 @@ function setTime() {
       // add here the function change to the score ranking
       cardsEl.innerHTML = "";
       timerEl.innerHTML = "";
+      scoreJokeEl = document.querySelector(".wrapper");
+      scoreJokeEl.remove();
       modalEl.setAttribute("class", "is-active");
       pEl.textContent = "Your point is " + points + " !";
     }

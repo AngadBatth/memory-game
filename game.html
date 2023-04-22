@@ -24,12 +24,18 @@
           <button id="play-button" class="playMusicButton" onclick="playBackgroundMusic()">Play Music</button>
           <button id="stop-play-button" class="stopPlayMusicButton" onclick="stopBackgroundMusic()">Stop Music</button>
         </div>
-
+        
         <div id="timer"></div>
+        
       </header>
-
-      <div id="cards" class="mainCards"></div>
-
+      <div class="wrapper">
+        <div id="cards" class="mainCards"></div>
+        <aside>
+          <div class="score"></div>
+          <div id="joke" class="jokeClass"></div>
+        </aside>
+        </div>
+      
       <div class="modal">
         <div class="modal-background custom-modal-background"></div>
         <div class="modal-content custom-modal">
@@ -52,10 +58,8 @@
       </div>
     </main>
     <footer>
-      <div id="joke" class="jokeClass"></div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SoundJS/1.0.0/soundjs.min.js"></script>
-    <script src="./Assets/javascript/script.js"></script>
     <script src="./Assets/javascript/script_Reviewcards.js"></script>
   </body>
 </html>

@@ -64,6 +64,7 @@ h1 {
     background-color: var(--btnColor);
     color: var(--btnText);
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .playBtn:hover {
