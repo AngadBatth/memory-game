@@ -9,6 +9,10 @@ var mediumBtn = document.getElementById("medium");
 var hardBtn = document.getElementById("hard");
 var cardValue = [];
 
+function clearScores() {
+  window.localStorage.clear();
+}
+
 if (easyBtn) {
   easyBtn.addEventListener("click", function easy() {
     location.replace("./game.html");
@@ -242,6 +246,10 @@ playBackgroundMusic();
 let buttonMusic = document.getElementById("play-button");
 let buttonStopMusic = document.getElementById("stop-play-button");
 
+function goHome() {
+  location.replace('index.html');
+}
+
 // Add an event listener to the play music button
 buttonMusic.addEventListener("click", function () {
   // Call the function to disable the button
@@ -318,32 +326,42 @@ setTime();
 
 if (submitBtn) {
   // Submit button to save high score and go to high scores page
-  submitBtn.addEventListener("click", function highscore(event) {
+  submitBtn.addEventListener("click", function highscore() {
+  
+        // Get the name of user and trim it if theres any spaces before/after
+        var user = inpName.value.trim();
     // Get the current high score array to add to it the new high score
     var highscore = JSON.parse(localStorage.getItem("highScores")) || [];
-    // Get the name of user and trim it if theres any spaces before/after
-    var user = inpName.value.trim();
-    //showing error message if the input box is empty
-    if (user == "") {
-      document.getElementById("inits").classList.add("is-danger");
-      document
-        .getElementById("error_message")
-        .setAttribute("style", "display:block;");
-      event.preventDefault();
-      return;
+    // Check if the input name is same as before and update his/her highest score only instead of displaying name and score twice
+    for (var i=0; i<highscore.length; i++) {
+      console.log("for loop");
+      if (highscore[i].name == user) {
+        console.log("same name");
+        var x = 10;
+        if (points > highscore[i].score) {
+        highscore[i].score = points;
+        localStorage.setItem("highScores", JSON.stringify(highscore));
+        }
+      }
+
     }
+// If x is not equal to 10 means it did not go through previous if statement which means the input name hasn't been used before
+if (x != 10) {
     // Current score object to store name and score (number of points) of user
     var currentscore = {
-      name: user,
-      score: points * (secondLeft + 1),
+        name : user,
+        score : points
     };
     // Add the new current score object to the high scores array
     highscore.push(currentscore);
     // Add the new highscore array into local storage
     localStorage.setItem("highScores", JSON.stringify(highscore));
-
+  }
+    
     initial = initialEl.value.trim();
     initialEl.setAttribute("type", "text");
-    location.replace("./highscores.html");
-  });
-}
+    // Go to highscores page
+    location.replace('./highscores.html');
+    
+     })
+    };
