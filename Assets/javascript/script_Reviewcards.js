@@ -225,26 +225,17 @@ fetch(apiUrl)
     console.error(error);
   });
 
-// Register the background music file with SoundJS
-createjs.Sound.registerSound({
-  src: "Assets/music/Ice & Fire - King Canyon.mp3",
-  id: "bgMusic",
-});
-createjs.Sound.play("backgroundMusic", { loop: -1 });
-createjs.Sound.volume = 0.07;
-
 // Add event listeners to the play and stop buttons
-document.getElementById("playButton").addEventListener("click", playMusic);
-document.getElementById("stopButton").addEventListener("click", stopMusic);
+document.getElementById("playButton").addEventListener("click", play);
+document.getElementById("stopButton").addEventListener("click", stop);
 
-// Define the playMusic function
-function playMusic() {
-  createjs.Sound.play("bgMusic", { loop: -1 });
+function play() {
+  audio.play();
 }
 
-// Define the stopMusic function
-function stopMusic() {
-  createjs.Sound.stop();
+function stop() {
+  audio.pause();
+  audio.currentTime = 0;
 }
 
 // create a h3 element
