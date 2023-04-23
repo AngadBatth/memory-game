@@ -92,6 +92,18 @@ h1 {
     transform: scale(1.05);
 }
 
+#easy {
+    font-size: 1.1rem;
+}
+
+#medium {
+    font-size: 1.1rem;
+}
+
+#hard {
+    font-size: 1.1rem;
+}
+
 @media screen and (max-width: 768px) {
     h1{
         font-size: 2rem;
