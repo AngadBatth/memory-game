@@ -38,13 +38,6 @@ This game is licensed under the MIT License. See the LICENSE file for more detai
 - [@Hiroro1989](https://github.com/Hiroro1989)
 - [@leandromangubat](https://github.com/leandromangubat)
 - [@mahdi83777](https://github.com/mahdi83777)
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = GitHub_AngadBatth/memory-game"/>
-  <img src = "https://contrib.rocks/image?repo = GitHub_ElisaMarchete/memory-game"/>
-  <img src = "https://contrib.rocks/image?repo = GitHub_Hiroro1989/memory-game"/>
-  <img src = "https://contrib.rocks/image?repo = GitHub_leandromangubat/memory-game"/>
-  <img src = "https://contrib.rocks/image?repo = GitHub_mahdi83777/memory-game"/>
-</a>
 
 ## Screenshot and link for the deployed application
 ![Screenshot of deployed application](./assets/Screenshot/xxxxx)

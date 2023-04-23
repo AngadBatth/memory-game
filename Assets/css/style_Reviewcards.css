@@ -95,7 +95,7 @@ aside {
     float: left;
     position: -webkit-sticky;
     position: sticky;
-    width: 15%;
+    width: 20%;
     padding: 30px 20px;
     height: 10%;
     background-color: var(--buttonColor);
