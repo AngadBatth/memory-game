@@ -225,44 +225,25 @@ fetch(apiUrl)
     console.error(error);
   });
 
-// function that plays the background music when the user clicks on the button "Play"
-function playBackgroundMusic() {
-  createjs.Sound.initializeDefaultPlugins();
-  createjs.Sound.registerSound(
-    "Assets/music/Ice & Fire - King Canyon.mp3",
-    "backgroundMusic"
-  );
-
-  createjs.Sound.play("backgroundMusic", { loop: -1 });
-  createjs.Sound.volume = 0.07;
-}
-playBackgroundMusic();
-
-// Get the button element
-let buttonMusic = document.getElementById("play-button");
-let buttonStopMusic = document.getElementById("stop-play-button");
-
-// Add an event listener to the play music button
-buttonMusic.addEventListener("click", function () {
-  // Call the function to disable the button
-  disableButton();
-  // Call the function to play the background music
-  playBackgroundMusic();
+// Register the background music file with SoundJS
+createjs.Sound.registerSound({
+  src: "Assets/music/Ice & Fire - King Canyon.mp3",
+  id: "bgMusic",
 });
+createjs.Sound.play("backgroundMusic", { loop: -1 });
+createjs.Sound.volume = 0.07;
 
-// Add an event listener to the stop play music button
-buttonStopMusic.addEventListener("click", function () {
-  // Call the function to unable the play button again
-  buttonMusic.disabled = false;
-});
+// Add event listeners to the play and stop buttons
+document.getElementById("playButton").addEventListener("click", playMusic);
+document.getElementById("stopButton").addEventListener("click", stopMusic);
 
-// Function to disable the button
-function disableButton() {
-  buttonMusic.disabled = true;
+// Define the playMusic function
+function playMusic() {
+  createjs.Sound.play("bgMusic", { loop: -1 });
 }
 
-// function that stop the background music when the user clicks on the button "Stop"
-function stopBackgroundMusic() {
+// Define the stopMusic function
+function stopMusic() {
   createjs.Sound.stop();
 }
 
