@@ -2,9 +2,9 @@
 This is a memory game where the user needs to match pairs of images hidden behind cards. The game uses two server-side APIs to provide the images and jokes displayed on the page.
 
 ## How to Play
-The game starts when the user selects the level of difficulty and he will be redirected to the game page. The user can select the level of difficulty by clicking on the "Easy", "Medium", or "Hard" button.
-The user then needs to click on two cards to reveal the images hidden behind them. If the images match, the cards will remain flipped over. If the images do not match, the cards will flip back over. The user continues to click on cards until all the cards have been matched or the timer runs out. The user can insert his initials at the end of the game to save his score.
-While playing the game, the user will see a timer counting down from 90 seconds. The final score is based on the timer left and the number of matches made.
+The game starts when the user selects the level of difficulty and he will be redirected to the game page. The user can select the level of difficulty by clicking on the "Easy", "Medium", or "Hard" button.  
+The user then needs to click on two cards to reveal the images hidden behind them. If the images match, the cards will remain flipped over. If the images do not match, the cards will flip back over. The user continues to click on cards until all the cards have been matched or the timer runs out.  
+The user can insert his initials at the end of the game to save his score. While playing the game, the user will see a timer counting down from 90 seconds. The final score is based on the timer left and the number of matches made.  
 The user can listen to a music while playing the game by clicking on the "Play Music" button, also it is possible to pause the music by clicking on the "Pause Music" button.
 
 ## Features
