@@ -228,11 +228,12 @@ fetch(apiUrl)
 // Add event listeners to the play and stop buttons
 document.getElementById("playButton").addEventListener("click", play);
 document.getElementById("stopButton").addEventListener("click", stop);
-
+// Function to play the audio
 function play() {
+  audio.volume = 0.08; // Set the volume
   audio.play();
 }
-
+// Function to stop the audio
 function stop() {
   audio.pause();
   audio.currentTime = 0;
