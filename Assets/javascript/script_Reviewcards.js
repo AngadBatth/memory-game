@@ -52,7 +52,7 @@ var initial = "";
 var secondLeft = 91;
 var cardData = [""];
 var points = 0;
-score.textContent = "Score: " + points;
+score.textContent = "Matches: " + points;
 let selectedCardsCount = 0;
 let jokeContainer = document.querySelector("#joke");
 let cardsEl;
@@ -197,7 +197,7 @@ fetch(apiUrl)
             cardsEl.innerHTML = "";
             timerEl.innerHTML = "";
             modalEl.setAttribute("class", "is-active");
-            pEl.textContent = "Your got " + points + " matches!";
+            pEl.textContent = "You got " + points + " matches!";
           }
         } else {
           let noMatch = "No match!";

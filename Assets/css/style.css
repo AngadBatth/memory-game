@@ -4,16 +4,6 @@
     --btnText: #000;
 }
 
-/* @keyframes slideInFromTop {
-    from {
-        transform: translateY(-400px);
-    }
-
-    to {
-        transform: translateY(0);
-    }
-} */
-
 @keyframes bounce-in {
     0% {
       opacity: 0;
@@ -27,11 +17,6 @@
     100% { transform: scale(1); }
   }
 
-/* @keyframes fade {
-    0%,50% { opacity: 0 }
-    50% { opacity: 1 }
-  } */
-
   @keyframes fade-in-down {
     0% {
       opacity: 0;
@@ -42,14 +27,6 @@
       transform: translateY(0);
     }
   }
-
-  /* @keyframes wiggle {
-    0% { transform: rotate(0deg); }
-   80% { transform: rotate(0deg); }
-   85% { transform: rotate(5deg); }
-   95% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
-} */
 
 * {
     box-sizing: border-box;
@@ -73,13 +50,7 @@ h1 {
     font-size: 2.8rem;
     color: #60D394;
     margin-bottom: 3rem;
-
-    /* animation-name: slideInFromTop;
-    animation-duration: 1.75s;
-    animation-iteration-count: 1; */
-
     animation: bounce-in 3s ease;
-
 }
 
 .container {

@@ -14,7 +14,6 @@
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
-    perspective: 1000px;
 }
 
 header {
@@ -67,10 +66,6 @@ button:hover {
     transition: transform 0.1s;
 }
 
-.card.flip {
-    transform: rotateY('180deg');
-}
-
 .back-img {
     width: 250px;
     height: 300px;
@@ -102,7 +97,7 @@ aside {
 }
 
 .score {
-    background-color: yellow;
+    background-color: #60D394;
     color: black;
     padding: 5px;
     border-radius: 10px;
@@ -126,6 +121,10 @@ aside {
     .back-img {
         width: 230px;
         height: 275px;
+    }
+
+    .score {
+        font-size: 20px;
     }
 }
 
@@ -166,6 +165,10 @@ aside {
         display: flex;
         flex-direction: column;
         text-align: center;
+    }
+
+    .score {
+        font-size: 10px;
     }
 
 }
@@ -236,5 +239,9 @@ aside {
     .jokeClass {
         padding-top: 10px;
 
+    }
+
+    .score {
+        font-size: 8px;
     }
 }
