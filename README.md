@@ -25,8 +25,8 @@ The user can listen to a music while playing the game by clicking on the "Play M
 ## APIs Used
 The game uses two server-side APIs:
 
-- Random Image API: This API provides a random image to be used as the background for each card. The image is fetched from a public image hosting service.
-- Joke API: This API: provides a random joke to be displayed at the bottom of the page. The joke is fetched from a public joke API.
+- Pixabay: This API provides a random image to be used as the background for each card. The image is fetched from a public image hosting service.
+- Official Joke: This API: provides a random joke to be displayed at the bottom of the page. The joke is fetched from a public joke API.
 
 ## License
 This game is licensed under the MIT License. See the LICENSE file for more details.
@@ -39,5 +39,12 @@ This game is licensed under the MIT License. See the LICENSE file for more detai
 - [@mahdi83777](https://github.com/mahdi83777)
 
 ## Screenshot and link for the deployed application
-![Screenshot of deployed application](./assets/Screenshot/xxxxx)
+![Screenshot of deployed application](./Assets/screenshots/screenshot1.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot2.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot3.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot4.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot5.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot6.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot7.png)
+![Screenshot of deployed application](./Assets/screenshots/screenshot8.png)
 [Link deployed application](https://angadbatth.github.io/memory-game/)
