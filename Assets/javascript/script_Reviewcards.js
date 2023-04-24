@@ -49,7 +49,7 @@ var apiUrl =
 let jokesUrl = "https://official-joke-api.appspot.com/jokes/random";
 
 var initial = "";
-var secondLeft = 91;
+var secondLeft = 61;
 var cardData = [""];
 var points = 0;
 score.textContent = "Matches: " + points;
