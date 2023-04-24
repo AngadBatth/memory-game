@@ -33,7 +33,6 @@ if (hardBtn) {
 
 // Retrieve level from local storage
 var level = JSON.parse(localStorage.getItem("level"));
-console.log(level);
 
 // Select number of cards based on difficulty chosen
 if (level == "easy") {
@@ -53,7 +52,7 @@ var initial = "";
 var secondLeft = 91;
 var cardData = [""];
 var points = 0;
-score.textContent = "Score: "+ points;
+score.textContent = "Score: " + points;
 let selectedCardsCount = 0;
 let jokeContainer = document.querySelector("#joke");
 let cardsEl;
@@ -74,7 +73,6 @@ backImgSrc.alt = "black background with an lightbulb";
 fetch(apiUrl)
   .then((res) => res.json())
   .then((data) => {
-    // SUGESTION: generate random number to get random image from the array when reload the page?
     cardData = [
       (card1 = data.hits[7].webformatURL),
       (card2 = data.hits[1].webformatURL),
@@ -140,7 +138,6 @@ fetch(apiUrl)
     };
 
     createCards();
-    
 
     // function that checks if two images are the same comparing the src "name" attribute
     let isSameImage = function (img1, img2) {
@@ -159,20 +156,19 @@ fetch(apiUrl)
       cardImageVal = img.getAttribute("cardimage");
       // Check if there are already two cards selected
       if (selectedCardsCount > 1) {
-        console.log(selectedCardsCount);
         return;
       }
       //Checks if the same card was selected
       cardValue.push(cardImageVal);
       //Prevents cards from being matched with itself
-      if(cardValue[0] == cardValue[1]){
+      if (cardValue[0] == cardValue[1]) {
         cardValue.pop();
         return;
       }
       // when the background image is clicked, replace it with the random image from the array
-      img.setAttribute("src", asset); 
+      img.setAttribute("src", asset);
       // add the clicked image to the last two cards array
-      lastTwoCards.push(img);   
+      lastTwoCards.push(img);
       // Increment selectedCardsCount
       selectedCardsCount++;
       // check if the clicked element is already in the matched cards array if yes return and do not execute the rest of the code
@@ -188,24 +184,23 @@ fetch(apiUrl)
         // check if the last two cards match
         if (isSameImage(lastTwoCards[0], lastTwoCards[1])) {
           points++;
-          console.log(points);
-          score.textContent = "Score: "+ points;
+
+          score.textContent = "Score: " + points;
           let match = "Match!";
-          console.log({ match });
+
           // add the matched cards to the matched cards array
           cardsMatch.push(lastTwoCards[0], lastTwoCards[1]);
-          console.log({ cardsMatch });
+
           // reset the selected cards count
           selectedCardsCount = 0;
           if (numImages == cardsMatch.length) {
             cardsEl.innerHTML = "";
             timerEl.innerHTML = "";
             modalEl.setAttribute("class", "is-active");
-            pEl.textContent = "Your point is " + points + " !";
+            pEl.textContent = "Your got " + points + " matches!";
           }
         } else {
           let noMatch = "No match!";
-          console.log({ noMatch });
 
           // add the cards that does not match to the object
           cardsNotMatch.card1 = lastTwoCards[0];
@@ -215,7 +210,7 @@ fetch(apiUrl)
           setTimeout(function () {
             cardsNotMatch.card1.setAttribute("src", backImgSrc);
             cardsNotMatch.card2.setAttribute("src", backImgSrc);
-            
+
             // reset the selected cards count
             selectedCardsCount = 0;
           }, 1000);
@@ -270,10 +265,11 @@ function disableButton() {
 function stopBackgroundMusic() {
   createjs.Sound.stop();
 }
+
 // create a h3 element
-      let jokeQuestionEl = document.createElement("h3");
+let jokeQuestionEl = document.createElement("h3");
 // create a p element
-      let jokeAnswerEl = document.createElement("p");
+let jokeAnswerEl = document.createElement("p");
 let joke = function () {
   fetch(jokesUrl)
     .then((response) => response.json())
@@ -313,7 +309,7 @@ function setTime() {
       scoreJokeEl = document.querySelector(".wrapper");
       scoreJokeEl.remove();
       modalEl.setAttribute("class", "is-active");
-      pEl.textContent = "Your point is " + points + " !";
+      pEl.textContent = "Your got " + points + " matches!";
     }
   }, 1000);
 }
@@ -328,16 +324,18 @@ if (submitBtn) {
     // Get the name of user and trim it if theres any spaces before/after
     var user = inpName.value.trim();
     //showing error message if the input box is empty
-    if(user==""){
-      document.getElementById('inits').classList.add('is-danger');
-      document.getElementById('error_message').setAttribute('style', 'display:block;')
+    if (user == "") {
+      document.getElementById("inits").classList.add("is-danger");
+      document
+        .getElementById("error_message")
+        .setAttribute("style", "display:block;");
       event.preventDefault();
       return;
     }
     // Current score object to store name and score (number of points) of user
     var currentscore = {
       name: user,
-      score: points,
+      score: points * (secondLeft + 1),
     };
     // Add the new current score object to the high scores array
     highscore.push(currentscore);
