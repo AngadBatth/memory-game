@@ -92,14 +92,14 @@ h1 {
     transform: scale(1.05);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
     h1{
         font-size: 2rem;
         margin-bottom: 1.5rem;
     }
 
     .playBtn{
-        font-size: 1.3rem;
+        font-size: 1.0rem;
     }
 
     .scoreBtn{
@@ -107,14 +107,14 @@ h1 {
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     h1{
         font-size: 1.4rem;
         margin-bottom: 1rem;
     }
 
     .playBtn{
-        font-size: 1rem;
+        font-size: 0.6rem;
         width: 3rem;
     }
 
