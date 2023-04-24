@@ -9,6 +9,7 @@ var mediumBtn = document.getElementById("medium");
 var hardBtn = document.getElementById("hard");
 var linebreak = document.createElement("br");
 var cardValue = [];
+let finalScore = 0;
 
 if (easyBtn) {
   easyBtn.addEventListener("click", function easy() {
@@ -195,6 +196,8 @@ fetch(apiUrl)
           // reset the selected cards count
           selectedCardsCount = 0;
           if (numImages == cardsMatch.length) {
+            finalScore = points * (secondLeft + 1);
+
             cardsEl.innerHTML = "";
             timerEl.innerHTML = "";
             modalEl.setAttribute("class", "is-active");
@@ -279,6 +282,8 @@ function setTime() {
     if (secondLeft < 1) {
       clearInterval(timerInterval);
       // add here the function change to the score ranking
+      finalScore = points * (secondLeft + 1);
+
       cardsEl.innerHTML = "";
       timerEl.innerHTML = "";
       scoreJokeEl = document.querySelector(".wrapper");
@@ -310,7 +315,7 @@ if (submitBtn) {
     // Current score object to store name and score (number of points) of user
     var currentscore = {
       name: user,
-      score: points * (secondLeft + 1),
+      score: finalScore,
     };
     // Add the new current score object to the high scores array
     highscore.push(currentscore);
