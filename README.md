@@ -13,7 +13,7 @@ The user can listen to a music while playing the game by clicking on the "Play M
 - The game uses a timer to keep track of the time the user takes to complete the game.
 - The game uses a modal to display the user's score when the game is completed or timer runs out and users can add their initials at the end of the game.
 - The game have three levels of difficulty: easy, medium, and hard.
-- The game uses a music player to play background music while the user is playing the game.
+- The game offer the user the option to listen a music while playing the game.
 
 ## Technologies Used
 - HTML
