@@ -7,6 +7,7 @@ var submitBtn = document.getElementById("submit");
 var easyBtn = document.getElementById("easy");
 var mediumBtn = document.getElementById("medium");
 var hardBtn = document.getElementById("hard");
+var linebreak = document.createElement("br");
 var cardValue = [];
 
 if (easyBtn) {
@@ -258,6 +259,7 @@ let joke = function () {
       // append the h3 and p elements to the joke container
       jokeContainer.appendChild(jokeQuestionEl);
       setTimeout(function () {
+        jokeContainer.appendChild(linebreak);
         jokeContainer.appendChild(jokeAnswerEl);
       }, 5000);
     })
