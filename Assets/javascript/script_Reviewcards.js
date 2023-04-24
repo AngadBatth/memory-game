@@ -197,7 +197,7 @@ fetch(apiUrl)
             cardsEl.innerHTML = "";
             timerEl.innerHTML = "";
             modalEl.setAttribute("class", "is-active");
-            pEl.textContent = "Your got " + points + " matches!";
+            pEl.textContent = "You got " + points + " matches!";
           }
         } else {
           let noMatch = "No match!";
@@ -282,7 +282,7 @@ function setTime() {
       scoreJokeEl = document.querySelector(".wrapper");
       scoreJokeEl.remove();
       modalEl.setAttribute("class", "is-active");
-      pEl.textContent = "Your got " + points + " matches!";
+      pEl.textContent = "You got " + points + " matches!";
     }
   }, 1000);
 }
