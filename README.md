@@ -2,9 +2,9 @@
 This is a memory game where the user needs to match pairs of images hidden behind cards. The game uses two server-side APIs to provide the images and jokes displayed on the page.
 
 ## How to Play
-The game starts when the user selects the level of difficulty and he will be redirected to the game page. The user can select the level of difficulty by clicking on the "Easy", "Medium", or "Hard" button.\n 
-The user then needs to click on two cards to reveal the images hidden behind them. If the images match, the cards will remain flipped over. If the images do not match, the cards will flip back over. The user continues to click on cards until all the cards have been matched or the timer runs out. The user can insert his initials at the end of the game to save his score.\n
-While playing the game, the user will see a timer counting down from 90 seconds. The final score is based on the timer left and the number of matches made.
+The game starts when the user selects the level of difficulty and he will be redirected to the game page. The user can select the level of difficulty by clicking on the "Easy", "Medium", or "Hard" button.\n" 
+The user then needs to click on two cards to reveal the images hidden behind them. If the images match, the cards will remain flipped over. If the images do not match, the cards will flip back over. The user continues to click on cards until all the cards have been matched or the timer runs out. The user can insert his initials at the end of the game to save his score.\n"
+While playing the game, the user will see a timer counting down from 90 seconds. The final score is based on the timer left and the number of matches made.\n"
 The user can listen to a music while playing the game by clicking on the "Play Music" button, also it is possible to pause the music by clicking on the "Pause Music" button.
 
 ## Features
@@ -23,11 +23,10 @@ The user can listen to a music while playing the game by clicking on the "Play M
 - Bulma CSS framework
 
 ## APIs Used
-The game uses two server-side APIs and a third API to play background music.
+The game uses two server-side APIs:
 
-- Random Image API (server-side): This API provides a random image to be used as the background for each card. The image is fetched from a public image hosting service.
-- Joke API: This API (server-side): provides a random joke to be displayed at the bottom of the page. The joke is fetched from a public joke API.
-- SoundJS API: This API is used to play background music.
+- Random Image API: This API provides a random image to be used as the background for each card. The image is fetched from a public image hosting service.
+- Joke API: This API: provides a random joke to be displayed at the bottom of the page. The joke is fetched from a public joke API.
 
 ## License
 This game is licensed under the MIT License. See the LICENSE file for more details.

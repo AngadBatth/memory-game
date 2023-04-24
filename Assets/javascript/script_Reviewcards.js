@@ -225,45 +225,18 @@ fetch(apiUrl)
     console.error(error);
   });
 
-// function that plays the background music when the user clicks on the button "Play"
-function playBackgroundMusic() {
-  createjs.Sound.initializeDefaultPlugins();
-  createjs.Sound.registerSound(
-    "Assets/music/Ice & Fire - King Canyon.mp3",
-    "backgroundMusic"
-  );
-
-  createjs.Sound.play("backgroundMusic", { loop: -1 });
-  createjs.Sound.volume = 0.07;
+// Add event listeners to the play and stop buttons
+document.getElementById("playButton").addEventListener("click", play);
+document.getElementById("stopButton").addEventListener("click", stop);
+// Function to play the audio
+function play() {
+  audio.volume = 0.08; // Set the volume
+  audio.play();
 }
-playBackgroundMusic();
-
-// Get the button element
-let buttonMusic = document.getElementById("play-button");
-let buttonStopMusic = document.getElementById("stop-play-button");
-
-// Add an event listener to the play music button
-buttonMusic.addEventListener("click", function () {
-  // Call the function to disable the button
-  disableButton();
-  // Call the function to play the background music
-  playBackgroundMusic();
-});
-
-// Add an event listener to the stop play music button
-buttonStopMusic.addEventListener("click", function () {
-  // Call the function to unable the play button again
-  buttonMusic.disabled = false;
-});
-
-// Function to disable the button
-function disableButton() {
-  buttonMusic.disabled = true;
-}
-
-// function that stop the background music when the user clicks on the button "Stop"
-function stopBackgroundMusic() {
-  createjs.Sound.stop();
+// Function to stop the audio
+function stop() {
+  audio.pause();
+  audio.currentTime = 0;
 }
 
 // create a h3 element
@@ -309,7 +282,7 @@ function setTime() {
       scoreJokeEl = document.querySelector(".wrapper");
       scoreJokeEl.remove();
       modalEl.setAttribute("class", "is-active");
-      pEl.textContent = "Your got " + points + " matches!";
+      pEl.textContent = "You got " + points + " matches!";
     }
   }, 1000);
 }
