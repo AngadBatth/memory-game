@@ -105,27 +105,33 @@ h1 {
     transform: scale(1.05);
 }
 
-@media screen and (max-width: 769px) {
-
 #easy {
-    font-size: 1.1rem;
-
     opacity: 1;
     animation: bounce-in 4s ease;
 }
 
 #medium {
-    font-size: 1.1rem;
-
     opacity: 1;
     animation: bounce-in 3.5s ease;
 }
 
 #hard {
-    font-size: 1.1rem;
-
     opacity: 1;
     animation: bounce-in 4s ease;
+}
+
+@media screen and (max-width: 769px) {
+
+#easy {
+    font-size: 1.1rem;
+}
+
+#medium {
+    font-size: 1.1rem;
+}
+
+#hard {
+    font-size: 1.1rem;
 }
 
 @media screen and (max-width: 768px) {
